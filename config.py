@@ -23,7 +23,7 @@ class Map:
     # Define a aceleração da gravidade
     GRAVITY = 5
     
-    # Define o mapa com os tipos de tiles
+    # Define o mapa com os tipos de tiles, se empty é porque não tem tile
     MAP = [
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
@@ -41,3 +41,26 @@ class Map:
         [BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, EMPTY, BLOCK, BLOCK, BLOCK],
         [BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, EMPTY, BLOCK, BLOCK, BLOCK],
     ]
+
+class TilesConfig:
+    #Define o tamanho de um bloco no mapa
+    TILE_SIZE = 40
+
+class PlayerConfig:
+    
+    # Velocidade em que o boneco anda
+    SPEED_X = 5
+    
+    # Dimensões do boneco
+    PLAYER_WIDTH = TilesConfig.TILE_SIZE
+    PLAYER_HEIGHT = int(TilesConfig.TILE_SIZE * 1.5)
+
+    # Define a velocidade inicial no pulo
+    JUMP_SIZE = TilesConfig.TILE_SIZE
+
+    PLAYER_IMG = 'player_img'
+
+    # Define estados possíveis do jogador
+    STILL = 'still'
+    JUMPING = 'jumping'
+    FALLING = 'falling'
