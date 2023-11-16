@@ -6,6 +6,7 @@ from config import Map, Colors, ScreenSettings, PlayerConfig
 from tiles import Tiles
 from os import path
 
+
 class Screen:
     def __init__(self, screen):
         self.screen = screen
@@ -15,6 +16,7 @@ class Screen:
 
     @abstractmethod
     def run(self): ...
+
 
 class Game(Screen):
 
@@ -130,6 +132,7 @@ class Game(Screen):
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
 
+
 class InitialScreen(Screen):
 
     def set_screen(self):
@@ -180,3 +183,58 @@ class InitialScreen(Screen):
     def __update_screen(self):
         self.__background()
         pygame.display.flip()
+
+
+class GameOverScreen(Screen):
+    def set_screen(self):
+        self.__initialize()
+        self.__play_music()
+
+    def __initialize(self):
+        pygame.init()
+        pygame.mixer.init()
+        pygame.display.set_caption(ScreenSettings.TITULO)
+    
+    def __play_music(self):
+        pygame.mixer.music.stop()
+
+    @property
+    def running(self):
+        return self._running
+    
+    @property
+    def running_phase(self):
+        return self._running_phase
+
+    def run(self):
+        self._running = True
+        self._running_phase = True
+        while self.running and self.running_phase:
+            self.__update_events()
+            self.__update_screen()
+    
+    def __background(self):
+        self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'gameover.jpg')
+        self.background = pygame.image.load(self.background_img_path)
+        self.screen.blit(self.background, (0,0))
+    
+    def __update_screen(self):
+        self.__background()
+        pygame.display.flip()
+
+    @property
+    def phase_to_go(self):
+        return self._phase_to_go
+    
+    def __update_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self._running = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    self._phase_to_go = 1
+                    self._running_phase = False
+                if event.key == pygame.K_m:
+                    self._phase_to_go = 0
+                    self._running_phase = False

@@ -1,5 +1,5 @@
 from config import ScreenSettings
-from game import InitialScreen, Game
+from game import InitialScreen, Game, GameOverScreen
 import pygame
 
 try:
@@ -7,8 +7,9 @@ try:
 
     tela_inicial = InitialScreen(screen)
     game = Game(screen)
+    gameover = GameOverScreen(screen)
 
-    phases = [tela_inicial, game]
+    phases = [tela_inicial, game, gameover]
 
     phase = 0
     while phase <= len(phases):
@@ -23,11 +24,18 @@ try:
         if phase == 1:
             phases[phase].set_screen()
             phases[phase].run()
-            if not phases[phase].running_phase:
-                phase = 0
             if not phases[phase].running:
                 phase += 3
-
+            if not phases[phase].running_phase:
+                phase = 2
+            
+        if phase == 2:
+            phases[phase].set_screen()
+            phases[phase].run()
+            if not phases[phase].running_phase:
+                phase = phases[phase].phase_to_go
+            if not phases[phase].running:
+                phase += 3
 
 except pygame.error:
     print("O jogo foi fechado.")
