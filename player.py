@@ -4,7 +4,7 @@ from config import Map, ScreenSettings, PlayerConfig,TilesConfig
 class Player(pygame.sprite.Sprite):
 
     # Construtor da classe.
-    def __init__(self, player_img, row, column, platforms, blocks):
+    def __init__(self, player_img, row, column, platforms, blocks, lava):
 
         # Construtor da classe pai (Sprite).
         pygame.sprite.Sprite.__init__(self)
@@ -25,6 +25,7 @@ class Player(pygame.sprite.Sprite):
         # Guarda os grupos de sprites para tratar as colisões
         self.platforms = platforms
         self.blocks = blocks
+        self.lava = lava
 
         # Posiciona o personagem
         self.rect.x = column * TilesConfig.TILE_SIZE
@@ -39,10 +40,13 @@ class Player(pygame.sprite.Sprite):
         # antes de começar a cair
         self.highest_y = self.rect.bottom
 
+        self.health = 5
+
     def update(self):
         self.__update_movement_y()
         self.__check_block_colision()
         self.__check_platform_colision()
+        self.__check_lava_colision()
         self.__update_movement_x()
         self.__check_horizontal_colision()
 
@@ -100,6 +104,13 @@ class Player(pygame.sprite.Sprite):
                 self.rect.right = collision.rect.left
             elif self.speedx < 0:
                 self.rect.left = collision.rect.right
+    
+    def __check_lava_colision(self):
+        collisions = pygame.sprite.spritecollide(self, self.lava, False)
+        
+        for lava in collisions:
+            if self.highest_y <= lava.rect.top:
+                self.health = 0
 
     def jump(self):
         # Só pode pular se ainda não estiver pulando ou caindo

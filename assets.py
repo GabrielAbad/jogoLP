@@ -12,4 +12,5 @@ class Imgs:
         assets[PlayerConfig.PLAYER_IMG] = pygame.image.load(path.join(img_dir, 'hero-single.png')).convert_alpha()
         assets[Map.BLOCK] = pygame.image.load(path.join(img_dir, 'tile-block.png')).convert()
         assets[Map.PLATF] = pygame.image.load(path.join(img_dir, 'tile-wood.png')).convert()
+        assets[Map.LAVA] = pygame.image.load(path.join(img_dir, 'lava.png')).convert()
         return assets

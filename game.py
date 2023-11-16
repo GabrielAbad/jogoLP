@@ -42,10 +42,11 @@ class Game(Screen):
         self.all_sprites = pygame.sprite.Group()
         self.platforms = pygame.sprite.Group()
         self.blocks = pygame.sprite.Group()
+        self.lava = pygame.sprite.Group()
 
     def __create_sprites(self):
         
-        self.player = Player(self.assets[PlayerConfig.PLAYER_IMG], 13, 0, self.platforms, self.blocks)
+        self.player = Player(self.assets[PlayerConfig.PLAYER_IMG], 13, 0, self.platforms, self.blocks,self.lava)
 
         # Cria tiles de acordo com o mapa
         for row in range(len(Map.MAP)):
@@ -58,6 +59,8 @@ class Game(Screen):
                         self.blocks.add(tile)
                     elif tile_type == Map.PLATF:
                         self.platforms.add(tile)
+                    elif tile_type == Map.LAVA:
+                        self.lava.add(tile)
 
         # Adiciona o jogador no grupo de sprites por último para ser desenhado por cima das plataformas
         self.all_sprites.add(self.player)
@@ -82,8 +85,7 @@ class Game(Screen):
         while self._running and self._running_phase:
             self.__update_events()
             self.__update_screen()
-            if self.player.rect.bottom >= 659:
-                self._running_phase = False
+            self.__death()
 
     def __update_events(self):
         # Ajusta a velocidade do jogo.
@@ -114,6 +116,12 @@ class Game(Screen):
                     self.player.stop_walk_right()
 
         self.all_sprites.update()
+
+    def __death(self):
+        if self.player.rect.bottom >= 659:
+            self._running_phase = False
+        if self.player.health == 0:
+            self._running_phase = False
 
     def __update_screen(self):
         self.screen.fill(Colors.WHITE)
