@@ -2,7 +2,7 @@ from abc import abstractmethod
 import pygame
 from assets import Imgs
 from player import Player
-from config import Map, Colors, ScreenSettings, PlayerConfig
+from config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig
 from tiles import Tiles
 from os import path
 
@@ -46,6 +46,8 @@ class Game(Screen):
         self.blocks = pygame.sprite.Group()
         self.lava = pygame.sprite.Group()
 
+        self.door = pygame.Rect(80,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+
     def __create_sprites(self):
         
         self.player = Player(self.assets[PlayerConfig.PLAYER_IMG], 13, 0, self.platforms, self.blocks,self.lava)
@@ -81,6 +83,10 @@ class Game(Screen):
     def running_phase(self):
         return self._running_phase
     
+    @property
+    def phase_to_go(self):
+        return self._phase_to_go
+
     def run(self):
         self._running_phase = True
         self._running = True
@@ -88,6 +94,7 @@ class Game(Screen):
             self.__update_events()
             self.__update_screen()
             self.__death()
+            self.__win()
 
     def __update_events(self):
         # Ajusta a velocidade do jogo.
@@ -120,15 +127,23 @@ class Game(Screen):
         self.all_sprites.update()
 
     def __death(self):
-        if self.player.rect.bottom >= 659:
-            self._running_phase = False
-        if self.player.health == 0:
-            self._running_phase = False
+        if not self.player.life:
+            self._phase_to_go = 2
+            self._running_phase = self.player.life
 
+    def __win(self):
+        if self.player.rect.left == self.door.left and self.player.highest_y == self.door.bottom:
+            for i in range(0,60):
+                self.door.width -= 1
+                if self.door.width == 0:
+                    self._phase_to_go = 0
+                    self._running_phase = False
+    
     def __update_screen(self):
         self.screen.fill(Colors.WHITE)
         self.all_sprites.draw(self.screen)
 
+        pygame.draw.rect(self.screen,Colors.BROWN,self.door)
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
 

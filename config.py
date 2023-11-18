@@ -5,6 +5,7 @@ class Colors:
     GREEN = (0, 255, 0)
     BLUE = (0, 0, 255)
     YELLOW = (255, 255, 0)
+    BROWN = (139,69,19)
 
 
 class ScreenSettings:
@@ -28,8 +29,8 @@ class Map:
     MAP = [
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
-        [EMPTY, EMPTY, BLOCK, BLOCK, BLOCK, PLATF, PLATF, BLOCK, BLOCK, BLOCK, EMPTY, EMPTY],
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
+        [EMPTY, EMPTY, BLOCK, BLOCK, BLOCK, PLATF, PLATF, BLOCK, BLOCK, BLOCK, EMPTY, EMPTY],
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
         [EMPTY, EMPTY, EMPTY, EMPTY, PLATF, PLATF, PLATF, PLATF, PLATF, PLATF, PLATF, EMPTY],
         [EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY],
@@ -43,9 +44,11 @@ class Map:
         [BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, BLOCK, EMPTY, BLOCK, BLOCK, BLOCK],
     ]
 
+
 class TilesConfig:
     #Define o tamanho de um bloco no mapa
     TILE_SIZE = 40
+
 
 class PlayerConfig:
     
@@ -65,3 +68,8 @@ class PlayerConfig:
     STILL = 'still'
     JUMPING = 'jumping'
     FALLING = 'falling'
+
+
+class DoorConfig:
+    DOOR_HEIGHT = 60
+    DOOR_WIDTH = 40

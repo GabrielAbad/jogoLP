@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         # Ajusta o tamanho da imagem que representa o boneco
         player_img = pygame.transform.scale(player_img, (PlayerConfig.PLAYER_WIDTH, PlayerConfig.PLAYER_HEIGHT))
 
-        # Define a imagem do sprite. Nesse exemplo vamos usar uma imagem estática (não teremos animação durante o pulo)
+        # Define a imagem do sprite.
         self.image = player_img
         
         # Detalhes sobre o posicionamento.
@@ -40,6 +40,7 @@ class Player(pygame.sprite.Sprite):
         # antes de começar a cair
         self.highest_y = self.rect.bottom
 
+        self.life = True
         self.health = 5
 
     def update(self):
@@ -49,6 +50,7 @@ class Player(pygame.sprite.Sprite):
         self.__check_lava_colision()
         self.__update_movement_x()
         self.__check_horizontal_colision()
+        self.__death()
 
     def __update_movement_y(self):
         self.speedy += Map.GRAVITY
@@ -129,3 +131,9 @@ class Player(pygame.sprite.Sprite):
     
     def stop_walk_right(self):
         self.speedx -= PlayerConfig.SPEED_X
+
+    def __death(self):
+        if self.rect.bottom >= 659:
+            self.life = False
+        if self.health == 0:
+            self.life = False

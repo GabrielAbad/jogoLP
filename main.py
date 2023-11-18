@@ -27,7 +27,7 @@ try:
             if not phases[phase].running:
                 phase += 3
             if not phases[phase].running_phase:
-                phase = 2
+                phase = phases[phase].phase_to_go
             
         if phase == 2:
             phases[phase].set_screen()
