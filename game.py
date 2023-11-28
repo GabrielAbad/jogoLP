@@ -50,7 +50,7 @@ class Game(Screen):
 
     def __create_sprites(self):
         
-        self.player = Player(self.assets[PlayerConfig.PLAYER_IMG], 13, 0, self.platforms, self.blocks,self.lava)
+        self.player = Player(self.assets[PlayerConfig.PLAYER_IMG], 13, 0, self.platforms, self.blocks,self.lava, 'water')
 
         # Cria tiles de acordo com o mapa
         for row in range(len(Map.MAP)):
@@ -126,18 +126,24 @@ class Game(Screen):
 
         self.all_sprites.update()
 
+    @property
+    def result(self):
+        return self._result
+
     def __death(self):
         if not self.player.life:
             self._phase_to_go = 2
             self._running_phase = self.player.life
+            self._result = 'lost'
 
     def __win(self):
         if self.player.rect.left == self.door.left and self.player.highest_y == self.door.bottom:
             for i in range(0,60):
                 self.door.width -= 1
                 if self.door.width == 0:
-                    self._phase_to_go = 0
+                    self._phase_to_go = 2
                     self._running_phase = False
+                    self._result = 'win'
     
     def __update_screen(self):
         self.screen.fill(Colors.WHITE)
@@ -191,7 +197,7 @@ class InitialScreen(Screen):
                     self._running_phase = False
     
     def __background(self):
-        self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'ibackground.jpg')
+        self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'SUPER.jpg')
         self.background = pygame.image.load(self.background_img_path)
         self.screen.blit(self.background, (0,0))
     
@@ -200,7 +206,12 @@ class InitialScreen(Screen):
         pygame.display.flip()
 
 
-class GameOverScreen(Screen):
+class EndScreen(Screen):
+    
+    def __init__(self, screen):
+        super().__init__(screen)
+        self._result = ''
+
     def set_screen(self):
         self.__initialize()
         self.__play_music()
@@ -229,13 +240,21 @@ class GameOverScreen(Screen):
             self.__update_screen()
     
     def __background(self):
-        self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'gameover.jpg')
-        self.background = pygame.image.load(self.background_img_path)
-        self.screen.blit(self.background, (0,0))
-    
+        if self._result == 'lost':
+            self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'gameover.jpg')
+            self.background = pygame.image.load(self.background_img_path)
+            self.screen.blit(self.background, (0,0))
+        elif self._result =='win':
+            self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'youwin.jpg')
+            self.background = pygame.image.load(self.background_img_path)
+            self.screen.blit(self.background, (0,0))
+   
     def __update_screen(self):
         self.__background()
         pygame.display.flip()
+
+    def setresult(self, result):
+        self._result = result
 
     @property
     def phase_to_go(self):
@@ -245,11 +264,16 @@ class GameOverScreen(Screen):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self._running = False
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    self._phase_to_go = 1
-                    self._running_phase = False
-                if event.key == pygame.K_m:
-                    self._phase_to_go = 0
-                    self._running_phase = False
+            if self._result == 'lost':
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        self._phase_to_go = 1
+                        self._running_phase = False
+                    if event.key == pygame.K_m:
+                        self._phase_to_go = 0
+                        self._running_phase = False
+            elif self._result == 'win':
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_m:
+                        self._phase_to_go = 0
+                        self._running_phase = False
