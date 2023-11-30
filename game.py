@@ -45,14 +45,15 @@ class Game(Screen):
         self.platforms = pygame.sprite.Group()
         self.blocks = pygame.sprite.Group()
         self.lava = pygame.sprite.Group()
+        self.water = pygame.sprite.Group()
 
         self.firedoor = pygame.Rect(80,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
         self.waterdoor = pygame.Rect(120,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
 
     def __create_sprites(self):
         
-        self._fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava, 'fire')
-        self._watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava, 'water')
+        self._fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava,self.water,'fire')
+        self._watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava,self.water ,'water')
         self._players =[self._watergirl,self._fireboy]
 
         # Cria tiles de acordo com o mapa
@@ -68,6 +69,8 @@ class Game(Screen):
                         self.platforms.add(tile)
                     elif tile_type == Map.LAVA:
                         self.lava.add(tile)
+                    elif tile_type == Map.WATER:
+                        self.water.add(tile)
 
         # Adiciona o jogador no grupo de sprites por último para ser desenhado por cima das plataformas
         self.all_sprites.add(player for player in self._players)
@@ -160,14 +163,20 @@ class Game(Screen):
                 self._running_phase = player.life
                 self._result = 'lost'
 
+    #TODO
     def __win(self):
-        count = 0
-
+        countw = 0
+        countf = 0
         if self._watergirl.rect.left == self.waterdoor.left and self._watergirl.highest_y == self.waterdoor.bottom:
-            count += 1
+            countw = countf + 1
+            print("watergirl chegou")
+            print(countw)
         if self._fireboy.rect.left == self.firedoor.left and self._fireboy.highest_y == self.firedoor.bottom:
-            count += 1
-        if count == 2:
+            countf = countw + 1
+            print("fireboy chegou")
+            print(countf)
+            print(countw)
+        if (countw or countf) >= 2:
             self._phase_to_go = 2
             self._running_phase = False
             self._result = 'win'

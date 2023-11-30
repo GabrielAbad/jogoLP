@@ -4,7 +4,7 @@ from config import Map, ScreenSettings, PlayerConfig,TilesConfig
 class Player(pygame.sprite.Sprite):
 
     # Construtor da classe.
-    def __init__(self, player_img, row, column, platforms, blocks, lava, element):
+    def __init__(self, player_img, row, column, platforms, blocks, lava, water, element):
 
         # Construtor da classe pai (Sprite).
         pygame.sprite.Sprite.__init__(self)
@@ -26,6 +26,7 @@ class Player(pygame.sprite.Sprite):
         self.platforms = platforms
         self.blocks = blocks
         self.lava = lava
+        self.water = water
 
         # Posiciona o personagem
         self.rect.x = column * TilesConfig.TILE_SIZE
@@ -55,12 +56,13 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         self.__update_movement_y()
-        self.__check_block_colision()
-        self.__check_platform_colision()
-        self.__check_lava_colision()
+        self.__check_block_collision()
+        self.__check_platform_collision()
+        self.__check_lava_collision()
         self.__update_movement_x()
-        self.__check_horizontal_colision()
+        self.__check_horizontal_collision()
         self.__death()
+        self.__check_water_collision()
 
     def __update_movement_y(self):
         self.speedy += Map.GRAVITY
@@ -73,7 +75,7 @@ class Player(pygame.sprite.Sprite):
         if self.state != PlayerConfig.FALLING:
             self.highest_y = self.rect.bottom
         
-    def __check_block_colision(self):   
+    def __check_block_collision(self):   
         collisions = pygame.sprite.spritecollide(self, self.blocks, False)
         
         for collision in collisions:
@@ -88,7 +90,7 @@ class Player(pygame.sprite.Sprite):
                 self.speedy = 0
                 self.state = PlayerConfig.STILL
 
-    def __check_platform_colision(self):
+    def __check_platform_collision(self):
         if self.speedy > 0: 
             collisions = pygame.sprite.spritecollide(self, self.platforms, False)
             
@@ -108,7 +110,7 @@ class Player(pygame.sprite.Sprite):
         elif self.rect.right >= ScreenSettings.WIDTH:
             self.rect.right = ScreenSettings.WIDTH - 1 
 
-    def __check_horizontal_colision(self):
+    def __check_horizontal_collision(self):
         collisions = pygame.sprite.spritecollide(self, self.blocks, False)        
         
         for collision in collisions:            
@@ -117,17 +119,21 @@ class Player(pygame.sprite.Sprite):
             elif self.speedx < 0:
                 self.rect.left = collision.rect.right
     
-    def __check_lava_colision(self):
+    def __check_lava_collision(self):
         collisions = pygame.sprite.spritecollide(self, self.lava, False)
         
-        if self._element == 'water':
-            for lava in collisions:
+        for lava in collisions:
+            if self._element == 'water':
                 if self.highest_y <= lava.rect.top:
+                    self.health = 0                       
+    
+    def __check_water_collision(self):
+        collisions = pygame.sprite.spritecollide(self, self.water, False)
+        
+        for water in collisions:
+            if self._element == 'fire':
+                if self.highest_y <= water.rect.top:
                     self.health = 0
-        if self._element == 'fire':
-            for lava in collisions:
-                if self.rect.bottom <= lava.rect.top:
-                    self.rect.bottom = lava.rect.bottom
 
     def jump(self):
         # Só pode pular se ainda não estiver pulando ou caindo
