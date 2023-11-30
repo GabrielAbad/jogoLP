@@ -1,9 +1,9 @@
 from abc import abstractmethod
 import pygame
-from assets import Imgs
-from player import Player
-from config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig
-from tiles import Tiles
+from .assets import Imgs
+from .player import Player
+from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig
+from .tiles import Tiles
 from os import path
 
 
@@ -20,6 +20,11 @@ class Screen:
 
 class Game(Screen):
 
+    def __init__(self, screen):
+        super().__init__(screen)
+        self._countwaterwin = 0
+        self._countfirewin = 0
+    
     def set_screen(self):
         self.__initialize()
         self.__create_sprites()
@@ -47,6 +52,7 @@ class Game(Screen):
         self.lava = pygame.sprite.Group()
         self.water = pygame.sprite.Group()
 
+        # Portas da vitória
         self.firedoor = pygame.Rect(80,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
         self.waterdoor = pygame.Rect(120,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
 
@@ -76,7 +82,7 @@ class Game(Screen):
         self.all_sprites.add(player for player in self._players)
     
     def __play_music(self):
-        self.music_path = path.join(path.join(path.dirname(__file__), 'msc'),'bglmudou.mp3')
+        self.music_path = path.join(path.dirname(__file__), '..', 'msc','bglmudou.mp3')
         pygame.mixer.music.load(self.music_path)
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(loops=-1)
@@ -163,26 +169,24 @@ class Game(Screen):
                 self._running_phase = player.life
                 self._result = 'lost'
 
-    #TODO
     def __win(self):
-        countw = 0
-        countf = 0
         if self._watergirl.rect.left == self.waterdoor.left and self._watergirl.highest_y == self.waterdoor.bottom:
-            countw = countf + 1
-            print("watergirl chegou")
-            print(countw)
+            self._countwaterwin += 1
         if self._fireboy.rect.left == self.firedoor.left and self._fireboy.highest_y == self.firedoor.bottom:
-            countf = countw + 1
-            print("fireboy chegou")
-            print(countf)
-            print(countw)
-        if (countw or countf) >= 2:
+            self._countfirewin += 1
+        if self._countwaterwin and self._countfirewin >= 1:
             self._phase_to_go = 2
             self._running_phase = False
             self._result = 'win'
-    
+            self._countwaterwin = 0
+            self._countfirewin = 0
+
     def __update_screen(self):
+        
+        # Preenche o fundo de branco
         self.screen.fill(Colors.WHITE)
+        
+        # Desenha todas as sprites na tela
         self.all_sprites.draw(self.screen)
 
         # Desenha as portas que tem que chegar
@@ -205,7 +209,7 @@ class InitialScreen(Screen):
         pygame.display.set_caption(ScreenSettings.TITULO)
 
     def __play_music(self):
-        self.music_path = path.join(path.join(path.dirname(__file__), 'msc'),'caillou_theme_song.mp3')
+        self.music_path = path.join(path.dirname(__file__), '..','msc','caillou_theme_song.mp3')
         pygame.mixer.music.load(self.music_path)
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(loops=-1)
@@ -236,7 +240,7 @@ class InitialScreen(Screen):
                     self._running_phase = False
     
     def __background(self):
-        self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'SUPER.jpg')
+        self.background_img_path = path.join(path.dirname(__file__), '..', 'img','SUPER.jpg')
         self.background = pygame.image.load(self.background_img_path)
         self.screen.blit(self.background, (0,0))
     
@@ -280,11 +284,11 @@ class EndScreen(Screen):
     
     def __background(self):
         if self._result == 'lost':
-            self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'gameover.jpg')
+            self.background_img_path = path.join(path.dirname(__file__), '..', 'img','gameover.jpg')
             self.background = pygame.image.load(self.background_img_path)
             self.screen.blit(self.background, (0,0))
         elif self._result =='win':
-            self.background_img_path = path.join(path.join(path.dirname(__file__), 'img'),'youwin.jpg')
+            self.background_img_path = path.join(path.dirname(__file__), '..', 'img','youwin.jpg')
             self.background = pygame.image.load(self.background_img_path)
             self.screen.blit(self.background, (0,0))
    

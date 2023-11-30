@@ -1,5 +1,5 @@
-from config import ScreenSettings
-from game import InitialScreen, Game, EndScreen
+from app.config import ScreenSettings
+from app.game import InitialScreen, Game, EndScreen
 import pygame
 
 try:

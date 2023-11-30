@@ -1,5 +1,5 @@
 import pygame
-from config import Map, ScreenSettings, PlayerConfig,TilesConfig
+from .config import Map, ScreenSettings, PlayerConfig,TilesConfig
 
 class Player(pygame.sprite.Sprite):
 
