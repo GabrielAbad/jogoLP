@@ -9,7 +9,7 @@ class Colors:
 
 
 class ScreenSettings:
-    TITULO = 'Nome do Jogo' # Titulo que aprece na parte de cima da tela
+    TITULO = 'Caillou' # Titulo que aprece na parte de cima da tela
     WIDTH = 480 # Largura da tela
     HEIGHT = 600 # Altura da tela
     FPS = 60 # Frames por segundo
@@ -62,7 +62,8 @@ class PlayerConfig:
     # Define a velocidade inicial no pulo
     JUMP_SIZE = TilesConfig.TILE_SIZE
 
-    PLAYER_IMG = 'player_img'
+    WATERGIRL_IMG = 'watergirl_img'
+    FIREBOY_IMG = 'fireboy_img'
 
     # Define estados possíveis do jogador
     STILL = 'still'
