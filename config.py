@@ -20,6 +20,7 @@ class Map:
     BLOCK = 0
     PLATF = 1
     LAVA = 2
+    WATER = 3
     EMPTY = -1
 
     # Define a aceleração da gravidade

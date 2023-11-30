@@ -46,11 +46,14 @@ class Game(Screen):
         self.blocks = pygame.sprite.Group()
         self.lava = pygame.sprite.Group()
 
-        self.door = pygame.Rect(80,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+        self.firedoor = pygame.Rect(80,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+        self.waterdoor = pygame.Rect(120,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
 
     def __create_sprites(self):
         
-        self.player = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 0, self.platforms, self.blocks,self.lava, 'water')
+        self._fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava, 'fire')
+        self._watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava, 'water')
+        self._players =[self._watergirl,self._fireboy]
 
         # Cria tiles de acordo com o mapa
         for row in range(len(Map.MAP)):
@@ -67,7 +70,7 @@ class Game(Screen):
                         self.lava.add(tile)
 
         # Adiciona o jogador no grupo de sprites por último para ser desenhado por cima das plataformas
-        self.all_sprites.add(self.player)
+        self.all_sprites.add(player for player in self._players)
     
     def __play_music(self):
         self.music_path = path.join(path.join(path.dirname(__file__), 'msc'),'bglmudou.mp3')
@@ -93,7 +96,7 @@ class Game(Screen):
         while self._running and self._running_phase:
             self.__update_events()
             self.__update_screen()
-            self.__death()
+            self.__gameover()
             self.__win()
 
     def __update_events(self):
@@ -105,43 +108,44 @@ class Game(Screen):
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
                 self._running = False
-            if self.player.element == 'water':
-                # Verifica se apertou alguma tecla.
-                if event.type == pygame.KEYDOWN:
-                    # Dependendo da tecla, altera o estado do jogador.
-                    if event.key == pygame.K_LEFT:
-                        self.player.walk_to_left()
-                    if event.key == pygame.K_RIGHT:
-                        self.player.walk_to_right()
-                    if event.key == pygame.K_UP:
-                        self.player.jump()
+            for player in self._players:
+                if player.element == 'water':
+                    # Verifica se apertou alguma tecla.
+                    if event.type == pygame.KEYDOWN:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_LEFT:
+                            player.walk_to_left()
+                        if event.key == pygame.K_RIGHT:
+                            player.walk_to_right()
+                        if event.key == pygame.K_UP:
+                            player.jump()
 
-                # Verifica se soltou alguma tecla.
-                if event.type == pygame.KEYUP:
-                    # Dependendo da tecla, altera o estado do jogador.
-                    if event.key == pygame.K_LEFT:
-                        self.player.stop_walk_left()
-                    elif event.key == pygame.K_RIGHT:
-                        self.player.stop_walk_right()
-            
-            elif self.player.element == 'fire':
-                # Verifica se apertou alguma tecla.
-                if event.type == pygame.KEYDOWN:
-                    # Dependendo da tecla, altera o estado do jogador.
-                    if event.key == pygame.K_a:
-                        self.player.walk_to_left()
-                    if event.key == pygame.K_d:
-                        self.player.walk_to_right()
-                    if event.key == pygame.K_w:
-                        self.player.jump()
+                    # Verifica se soltou alguma tecla.
+                    if event.type == pygame.KEYUP:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_LEFT:
+                            player.stop_walk_left()
+                        elif event.key == pygame.K_RIGHT:
+                            player.stop_walk_right()
+                
+                elif player.element == 'fire':
+                    # Verifica se apertou alguma tecla.
+                    if event.type == pygame.KEYDOWN:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_a:
+                            player.walk_to_left()
+                        if event.key == pygame.K_d:
+                            player.walk_to_right()
+                        if event.key == pygame.K_w:
+                            player.jump()
 
-                # Verifica se soltou alguma tecla.
-                if event.type == pygame.KEYUP:
-                    # Dependendo da tecla, altera o estado do jogador.
-                    if event.key == pygame.K_a:
-                        self.player.stop_walk_left()
-                    elif event.key == pygame.K_d:
-                        self.player.stop_walk_right()
+                    # Verifica se soltou alguma tecla.
+                    if event.type == pygame.KEYUP:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_a:
+                            player.stop_walk_left()
+                        elif event.key == pygame.K_d:
+                            player.stop_walk_right()
 
         self.all_sprites.update()
 
@@ -149,28 +153,33 @@ class Game(Screen):
     def result(self):
         return self._result
 
-    def __death(self):
-        if not self.player.life:
-            self._phase_to_go = 2
-            self._running_phase = self.player.life
-            self._result = 'lost'
+    def __gameover(self):
+        for player in self._players:
+            if not player.life:
+                self._phase_to_go = 2
+                self._running_phase = player.life
+                self._result = 'lost'
 
     def __win(self):
-        if self.player.rect.left == self.door.left and self.player.highest_y == self.door.bottom:
-            for i in range(0,60):
-                self.door.width -= 1
-                if self.door.width == 0:
-                    self._phase_to_go = 2
-                    self._running_phase = False
-                    self._result = 'win'
+        count = 0
+
+        if self._watergirl.rect.left == self.waterdoor.left and self._watergirl.highest_y == self.waterdoor.bottom:
+            count += 1
+        if self._fireboy.rect.left == self.firedoor.left and self._fireboy.highest_y == self.firedoor.bottom:
+            count += 1
+        if count == 2:
+            self._phase_to_go = 2
+            self._running_phase = False
+            self._result = 'win'
     
     def __update_screen(self):
         self.screen.fill(Colors.WHITE)
         self.all_sprites.draw(self.screen)
 
-        # Desenha a porta
-        pygame.draw.rect(self.screen,Colors.BROWN,self.door)
-        
+        # Desenha as portas que tem que chegar
+        pygame.draw.rect(self.screen,Colors.BLUE,self.waterdoor)
+        pygame.draw.rect(self.screen,Colors.RED,self.firedoor)
+
         # Depois de desenhar tudo, inverte o display.
         pygame.display.flip()
 

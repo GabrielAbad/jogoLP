@@ -40,3 +40,5 @@ try:
 
 except pygame.error:
     print("O jogo foi fechado.")
+except IndexError:
+    print("O jogo foi fechado.")
