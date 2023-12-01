@@ -2,9 +2,106 @@ import pygame
 from .config import Map, ScreenSettings, PlayerConfig,TilesConfig
 
 class Player(pygame.sprite.Sprite):
+    """
+    Classe que representa o jogador no jogo.
 
+    Atributes:
+    ----------
+    player_img : pygame.Surface
+        Imagem representando o jogador.
+
+    row : int
+        Linha inicial do jogador no mapa.
+
+    column : int
+        Coluna inicial do jogador no mapa.
+
+    platforms : pygame.sprite.Group
+        Grupo de plataformas no jogo.
+
+    blocks : pygame.sprite.Group
+        Grupo de blocos no jogo.
+
+    lava : pygame.sprite.Group
+        Grupo de lava no jogo.
+
+    water : pygame.sprite.Group
+        Grupo de água no jogo.
+
+    element : str
+        Tipo do jogador, 'water' ou 'fire'.
+
+    state : str
+        Estado atual do jogador, inicializado como 'still'.
+
+    rect : pygame.Rect
+        Retângulo que representa a posição e tamanho do jogador.
+
+    speedx : int
+        Velocidade horizontal do jogador.
+
+    speedy : int
+        Velocidade vertical do jogador.
+
+    highest_y : int
+        Altura máxima alcançada pelo jogador antes de começar a cair.
+
+    life : bool
+        Indica se o jogador está vivo.
+
+    health : int
+        Vida do jogador.
+
+    Metods:
+    -------
+    __init__(self, player_img, row, column, platforms, blocks, lava, water, element)
+        Construtor da classe.
+
+    update(self)
+        Atualiza o estado do jogador, chama todos os métodos privados da classe.
+
+    jump(self)
+        Função para fazer o jogador pular.
+
+    walk_to_left(self)
+        Move o jogador para a esquerda.
+
+    walk_to_right(self)
+        Move o jogador para a direita.
+
+    stop_walk_left(self)
+        Para o movimento do jogador para a esquerda.
+
+    stop_walk_right(self)
+        Para o movimento do jogador para a direita.
+
+    __death(self)
+        Verifica se o jogador morreu.
+
+    __update_movement_y(self)
+        Atualiza o movimento vertical do jogador.
+
+    __check_block_collision(self)
+        Verifica colisões com blocos.
+
+    __check_platform_collision(self)
+        Verifica colisões com plataformas.
+
+    __update_movement_x(self)
+        Atualiza o movimento horizontal do jogador.
+
+    __check_horizontal_collision(self)
+        Verifica colisões horizontais.
+
+    __check_lava_collision(self)
+        Verifica colisões com lava.
+
+    __check_water_collision(self)
+        Verifica colisões com água.
+    """
     # Construtor da classe.
-    def __init__(self, player_img, row, column, platforms, blocks, lava, water, element):
+    def __init__(self, player_img, row, column, platforms, 
+                 blocks, lava, water, element):
 
         # Construtor da classe pai (Sprite).
         pygame.sprite.Sprite.__init__(self)
