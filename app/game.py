@@ -1,13 +1,13 @@
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 import pygame
-from .assets import Imgs
+from .assets import load_assets, img_dir
 from .player import Player
-from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig
+from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig, InitialScreenSettings, EndScreenSettings
 from .tiles import Tiles
 from os import path
 
 
-class Screen:
+class Screen(ABC):
     def __init__(self, screen):
         self.screen = screen
 
@@ -43,7 +43,7 @@ class Game(Screen):
         self.clock = pygame.time.Clock()
 
         # Carrega assets
-        self.assets = Imgs.load_assets(Imgs.img_dir)
+        self.assets = load_assets(img_dir)
 
         # Cria os grupos de Sprite
         self.all_sprites = pygame.sprite.Group()
@@ -58,9 +58,9 @@ class Game(Screen):
 
     def __create_sprites(self):
         
-        self._fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava,self.water,'fire')
-        self._watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava,self.water ,'water')
-        self._players =[self._watergirl,self._fireboy]
+        self.fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava,self.water,'fire')
+        self.watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava,self.water ,'water')
+        self.players =[self.watergirl,self.fireboy]
 
         # Cria tiles de acordo com o mapa
         for row in range(len(Map.MAP)):
@@ -79,7 +79,7 @@ class Game(Screen):
                         self.water.add(tile)
 
         # Adiciona o jogador no grupo de sprites por último para ser desenhado por cima das plataformas
-        self.all_sprites.add(player for player in self._players)
+        self.all_sprites.add(player for player in self.players)
     
     def __play_music(self):
         self.music_path = path.join(path.dirname(__file__), '..', 'msc','bglmudou.mp3')
@@ -117,7 +117,7 @@ class Game(Screen):
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
                 self._running = False
-            for player in self._players:
+            for player in self.players:
                 if player.element == 'water':
                     # Verifica se apertou alguma tecla.
                     if event.type == pygame.KEYDOWN:
@@ -163,16 +163,16 @@ class Game(Screen):
         return self._result
 
     def __gameover(self):
-        for player in self._players:
+        for player in self.players:
             if not player.life:
                 self._phase_to_go = 2
                 self._running_phase = player.life
                 self._result = 'lost'
 
     def __win(self):
-        if self._watergirl.rect.left == self.waterdoor.left and self._watergirl.highest_y == self.waterdoor.bottom:
+        if self.watergirl.rect.left == self.waterdoor.left and self.watergirl.highest_y == self.waterdoor.bottom:
             self._countwaterwin += 1
-        if self._fireboy.rect.left == self.firedoor.left and self._fireboy.highest_y == self.firedoor.bottom:
+        if self.fireboy.rect.left == self.firedoor.left and self.fireboy.highest_y == self.firedoor.bottom:
             self._countfirewin += 1
         if self._countwaterwin and self._countfirewin >= 1:
             self._phase_to_go = 2
@@ -240,8 +240,9 @@ class InitialScreen(Screen):
                     self._running_phase = False
     
     def __background(self):
-        self.background_img_path = path.join(path.dirname(__file__), '..', 'img','SUPER.jpg')
-        self.background = pygame.image.load(self.background_img_path)
+        # Carrega assets
+        self.assets = load_assets(img_dir)
+        self.background = self.assets[InitialScreenSettings.BACKGROUND_IMG]
         self.screen.blit(self.background, (0,0))
     
     def __update_screen(self):
@@ -281,15 +282,14 @@ class EndScreen(Screen):
         while self.running and self.running_phase:
             self.__update_events()
             self.__update_screen()
-    
+    #TODO
     def __background(self):
+        self.assets = load_assets(img_dir)
         if self._result == 'lost':
-            self.background_img_path = path.join(path.dirname(__file__), '..', 'img','gameover.jpg')
-            self.background = pygame.image.load(self.background_img_path)
+            self.background = self.assets[EndScreenSettings.GAMEOVER_IMG]
             self.screen.blit(self.background, (0,0))
         elif self._result =='win':
-            self.background_img_path = path.join(path.dirname(__file__), '..', 'img','youwin.jpg')
-            self.background = pygame.image.load(self.background_img_path)
+            self.background = self.assets[EndScreenSettings.WIN_IMG]
             self.screen.blit(self.background, (0,0))
    
     def __update_screen(self):
