@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 import pygame
-from .assets import Imgs
+from .assets import load_assets, img_dir
 from .player import Player
 from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig, InitialScreenSettings, EndScreenSettings
 from .tiles import Tiles
@@ -43,7 +43,7 @@ class Game(Screen):
         self.clock = pygame.time.Clock()
 
         # Carrega assets
-        self.assets = Imgs.load_assets(Imgs.img_dir)
+        self.assets = load_assets(img_dir)
 
         # Cria os grupos de Sprite
         self.all_sprites = pygame.sprite.Group()
@@ -241,7 +241,7 @@ class InitialScreen(Screen):
     
     def __background(self):
         # Carrega assets
-        self.assets = Imgs.load_assets(Imgs.img_dir)
+        self.assets = load_assets(img_dir)
         self.background = self.assets[InitialScreenSettings.BACKGROUND_IMG]
         self.screen.blit(self.background, (0,0))
     
@@ -282,9 +282,9 @@ class EndScreen(Screen):
         while self.running and self.running_phase:
             self.__update_events()
             self.__update_screen()
-    
+    #TODO
     def __background(self):
-        self.assets = Imgs.load_assets(Imgs.img_dir)
+        self.assets = load_assets(img_dir)
         if self._result == 'lost':
             self.background = self.assets[EndScreenSettings.GAMEOVER_IMG]
             self.screen.blit(self.background, (0,0))

@@ -51,53 +51,6 @@ class Player(pygame.sprite.Sprite):
 
     health : int
         Vida do jogador.
-
-    Metods:
-    -------
-    __init__(self, player_img, row, column, platforms, blocks, lava, water, element)
-        Construtor da classe.
-
-    update(self)
-        Atualiza o estado do jogador, chama todos os métodos privados da classe.
-
-    jump(self)
-        Função para fazer o jogador pular.
-
-    walk_to_left(self)
-        Move o jogador para a esquerda.
-
-    walk_to_right(self)
-        Move o jogador para a direita.
-
-    stop_walk_left(self)
-        Para o movimento do jogador para a esquerda.
-
-    stop_walk_right(self)
-        Para o movimento do jogador para a direita.
-
-    __death(self)
-        Verifica se o jogador morreu.
-
-    __update_movement_y(self)
-        Atualiza o movimento vertical do jogador.
-
-    __check_block_collision(self)
-        Verifica colisões com blocos.
-
-    __check_platform_collision(self)
-        Verifica colisões com plataformas.
-
-    __update_movement_x(self)
-        Atualiza o movimento horizontal do jogador.
-
-    __check_horizontal_collision(self)
-        Verifica colisões horizontais.
-
-    __check_lava_collision(self)
-        Verifica colisões com lava.
-
-    __check_water_collision(self)
-        Verifica colisões com água.
     """
     # Construtor da classe.
     def __init__(self, player_img, row, column, platforms, 
@@ -133,7 +86,6 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
 
-        # Define altura no mapa
         # Essa variável sempre conterá a maior altura alcançada pelo jogador
         # antes de começar a cair
         self.highest_y = self.rect.bottom
@@ -149,9 +101,11 @@ class Player(pygame.sprite.Sprite):
 
     @property
     def element(self):
+        # Retorna o tipo de elemento ('water' ou 'fire').
         return self._element
 
     def update(self):
+        # Atualiza movimento, colisões e estado.
         self.__update_movement_y()
         self.__check_block_collision()
         self.__check_platform_collision()
@@ -162,6 +116,7 @@ class Player(pygame.sprite.Sprite):
         self.__check_water_collision()
 
     def __update_movement_y(self):
+        # Atualiza movimento vertical com gravidade.
         self.speedy += Map.GRAVITY
         
         if self.speedy > 0:
@@ -171,8 +126,9 @@ class Player(pygame.sprite.Sprite):
 
         if self.state != PlayerConfig.FALLING:
             self.highest_y = self.rect.bottom
-        
-    def __check_block_collision(self):   
+
+    def __check_block_collision(self):
+        # Verifica e trata colisões com blocos.
         collisions = pygame.sprite.spritecollide(self, self.blocks, False)
         
         for collision in collisions:
@@ -188,11 +144,12 @@ class Player(pygame.sprite.Sprite):
                 self.state = PlayerConfig.STILL
 
     def __check_platform_collision(self):
+        # Verifica e trata colisões com plataformas, ajustando a posição.
         if self.speedy > 0: 
             collisions = pygame.sprite.spritecollide(self, self.platforms, False)
             
             for platform in collisions:
-               
+            
                 if self.highest_y <= platform.rect.top:
                     self.rect.bottom = platform.rect.top
                     self.highest_y = self.rect.bottom
@@ -200,6 +157,7 @@ class Player(pygame.sprite.Sprite):
                     self.state = PlayerConfig.STILL
 
     def __update_movement_x(self):
+        # Atualiza movimento horizontal, limitando posição na tela.
         self.rect.x += self.speedx
 
         if self.rect.left < 0:
@@ -208,6 +166,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = ScreenSettings.WIDTH - 1 
 
     def __check_horizontal_collision(self):
+        # Verifica e trata colisões horizontais com blocos.
         collisions = pygame.sprite.spritecollide(self, self.blocks, False)        
         
         for collision in collisions:            
@@ -215,43 +174,46 @@ class Player(pygame.sprite.Sprite):
                 self.rect.right = collision.rect.left
             elif self.speedx < 0:
                 self.rect.left = collision.rect.right
-    
+
     def __check_lava_collision(self):
+        # Verifica e trata colisões com elementos de lava.
         collisions = pygame.sprite.spritecollide(self, self.lava, False)
         
         for lava in collisions:
-            if self._element == 'water':
-                if self.highest_y <= lava.rect.top:
-                    self.health = 0                       
-    
+            if self._element == 'water' and self.highest_y <= lava.rect.top:
+                self.health = 0
+
     def __check_water_collision(self):
+        # Verifica e trata colisões com elementos de água.
         collisions = pygame.sprite.spritecollide(self, self.water, False)
         
         for water in collisions:
-            if self._element == 'fire':
-                if self.highest_y <= water.rect.top:
-                    self.health = 0
+            if self._element == 'fire' and self.highest_y <= water.rect.top:
+                self.health = 0
 
     def jump(self):
-        # Só pode pular se ainda não estiver pulando ou caindo
+        # Pula se não estiver pulando ou caindo.
         if self.state == PlayerConfig.STILL:
             self.speedy -= PlayerConfig.JUMP_SIZE
             self.state = PlayerConfig.JUMPING
 
     def walk_to_left(self):
+        # Move para a esquerda.
         self.speedx -= PlayerConfig.SPEED_X
 
     def walk_to_right(self):
+        # Move para a direita.
         self.speedx += PlayerConfig.SPEED_X
-    
+
     def stop_walk_left(self):
+        # Para o movimento para a esquerda.
         self.speedx += PlayerConfig.SPEED_X
-    
+
     def stop_walk_right(self):
+        # Para o movimento para a direita.
         self.speedx -= PlayerConfig.SPEED_X
 
     def __death(self):
-        if self.rect.bottom >= 659:
-            self.life = False
-        if self.health == 0:
+        # Verifica se o jogador está morto.
+        if self.rect.bottom >= 659 or self.health == 0:
             self.life = False
