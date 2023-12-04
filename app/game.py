@@ -8,14 +8,42 @@ from os import path
 
 
 class Screen(ABC):
-    def __init__(self, screen):
+    """
+    Classe abstrata que representa uma tela de jogo ou uma tela estática.
+
+    Atributes:
+    ----------
+        screen (pygame.display): Para começar o pygame sempre precisa de uma interface
+    """
+
+    def __init__(self, screen:pygame.display):
+        """
+        Construtor para inicializar o objeto que herda de Screen.
+        Lembrando que essa classe é abstrata, então esse método serve apenas
+        para ser herdado pelas 3 classes filhas dela para que possam ser 
+        construídas.
+
+        Parameters:
+        -----------
+            screen (pygame.display): Para começar o pygame sempre precisa de uma interface
+        """
         self.screen = screen
 
     @abstractmethod
-    def set_screen(self): ...
+    def set_screen(self):
+        """
+        Método abstrato para definir o conteúdo da tela.
+        Este método deve ser implementado por subclasses concretas.
+        """
+        ...
 
     @abstractmethod
-    def run(self): ...
+    def run(self): 
+        """
+        Método abstrato para executar a funcionalidade da tela.
+        Este método deve ser implementado por subclasses concretas.
+        """
+        ...
 
 
 class Game(Screen):

@@ -214,7 +214,9 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = ScreenSettings.WIDTH - 1 
 
     def __check_horizontal_collision(self):
-        # Verifica e trata colisões horizontais com blocos.
+        """
+        Verifica e trata colisões horizontais com blocos.
+        """
         collisions = pygame.sprite.spritecollide(self, self.blocks, False)        
         
         for collision in collisions:            
@@ -224,7 +226,10 @@ class Player(pygame.sprite.Sprite):
                 self.rect.left = collision.rect.right
 
     def __check_lava_collision(self):
-        # Verifica e trata colisões com elementos de lava.
+        """
+        Verifica e trata colisões com elementos de lava. A watergirl morre ao
+        encostar na lava e o fireboy pode nadar na lava.
+        """
         collisions = pygame.sprite.spritecollide(self, self.lava, False)
         
         for lava in collisions:
@@ -232,7 +237,10 @@ class Player(pygame.sprite.Sprite):
                 self.health = 0
 
     def __check_water_collision(self):
-        # Verifica e trata colisões com elementos de água.
+        """
+        Verifica e trata colisões com elementos de água. A watergirl pode 
+        nadar na água e o fireboy morre ao encostar na água.
+        """
         collisions = pygame.sprite.spritecollide(self, self.water, False)
         
         for water in collisions:
@@ -240,28 +248,46 @@ class Player(pygame.sprite.Sprite):
                 self.health = 0
 
     def jump(self):
-        # Pula se não estiver pulando ou caindo.
+        """
+        Pula se não estiver pulando ou caindo.
+        """
         if self.state == PlayerConfig.STILL:
             self.speedy -= PlayerConfig.JUMP_SIZE
             self.state = PlayerConfig.JUMPING
 
     def walk_to_left(self):
-        # Move para a esquerda.
+        """
+        Move para a esquerda o personagem utilizando a posicao do rect dele
+        e a configuração de speed pre definida. A speedx diz o quanto o
+        personagem move horizontalmente.
+        """
         self.speedx -= PlayerConfig.SPEED_X
 
     def walk_to_right(self):
-        # Move para a direita.
+        """
+        Move para a direita o personagem utilizando a posicao do rect dele
+        e a configuração de speed pré definida. A speedx diz o quanto o
+        personagem move horizontalmente.
+        """
         self.speedx += PlayerConfig.SPEED_X
 
     def stop_walk_left(self):
-        # Para o movimento para a esquerda.
+        """
+        Faz o boneco parar de andar caso estivesse andando para esquerda.
+        """
         self.speedx += PlayerConfig.SPEED_X
 
     def stop_walk_right(self):
-        # Para o movimento para a direita.
+        """
+        Faz o boneco parar de andar caso estivesse andando para direita.
+        """
         self.speedx -= PlayerConfig.SPEED_X
 
     def __death(self):
-        # Verifica se o jogador está morto.
+        """
+        Trata as possibilidades de morte, caso o personagem caia no buraoco
+        do mapa, ou caia na água se for o fireboy, ou caia no fogo se for a
+        watergirl.
+        """
         if self.rect.bottom >= 659 or self.health == 0:
             self.life = False
