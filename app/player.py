@@ -121,12 +121,18 @@ class Player(pygame.sprite.Sprite):
         self._element = element
 
     @property
-    def element(self):
-        # Retorna o tipo de elemento ('water' ou 'fire').
+    def element(self)->str:
+        """
+        Getter do atributo que representa o elemento do personagem.
+        Retorna o tipo de elemento ('water' ou 'fire').
+        """
         return self._element
 
     def update(self):
-        # Atualiza movimento, colisões e estado.
+        """
+        Atualiza movimento, colisões e estado. Método usado por sprites
+        do pygame.
+        """
         self.__update_movement_y()
         self.__check_block_collision()
         self.__check_platform_collision()

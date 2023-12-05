@@ -13,7 +13,8 @@ class Screen(ABC):
 
     Atributes:
     ----------
-        screen (pygame.display): Para começar o pygame sempre precisa de uma interface
+    screen : pygame.display
+        Para começar o pygame sempre precisa de uma interface
     """
 
     def __init__(self, screen:pygame.display):
@@ -25,7 +26,8 @@ class Screen(ABC):
 
         Parameters:
         -----------
-            screen (pygame.display): Para começar o pygame sempre precisa de uma interface
+        screen : pygame.display
+            Para começar o pygame sempre precisa de uma interface
         """
         self.screen = screen
 
