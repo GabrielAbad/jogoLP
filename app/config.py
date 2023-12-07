@@ -128,7 +128,28 @@ class EndScreenSettings:
     WIN_IMG ='win_img' 
     GAMEOVER_IMG = 'gameover_img' 
 
+class ModeScreenSettings:
+    """
+    Classe responsável por armazenar as configurações da tela de modo de jogo.
 
+    Constants:
+    -----------
+    WIN_IMG : str
+        Chave do dicionário de assets que representa a imagem de vitória na tela final.
+
+    GAMEOVER_IMG : str
+        Chave do dicionário de assets que representa a imagem de derrota/game over na tela final.
+        
+    Example:
+    --------
+    Acesso às constantes:
+        >>> print(EndScreenSettings.WIN_IMG)        # Saída: 'win_img'
+        >>> print(EndScreenSettings.GAMEOVER_IMG)   # Saída: 'gameover_img'
+    """
+    
+    # Chaves do dicionario de assets
+    WIN_IMG ='win_img' 
+    GAMEOVER_IMG = 'gameover_img' 
 class Map:
     """
     Classe responsável pela estrutura do mapa e configuração da gravidade do jogo.

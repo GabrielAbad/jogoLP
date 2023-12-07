@@ -190,11 +190,11 @@ class Game(Screen):
 
                 # Aumenta o volume se a tecla 'k' for pressionada.
                 if keys[pygame.K_k]:
-                    pygame.mixer.music.set_volume(min(1.0, pygame.mixer.music.get_volume() + 0.1))
+                    pygame.mixer.music.set_volume(min(1.0, pygame.mixer.music.get_volume() + 0.01))
 
                 # Diminui o volume se a tecla 'l' for pressionada.
                 if keys[pygame.K_l]:
-                    pygame.mixer.music.set_volume(max(0.0, pygame.mixer.music.get_volume() - 0.1))
+                    pygame.mixer.music.set_volume(max(0.0, pygame.mixer.music.get_volume() - 0.01))
 
         self.all_sprites.update()
 
@@ -289,6 +289,61 @@ class InitialScreen(Screen):
         self.__background()
         pygame.display.flip()
 
+
+class ModeScreen(Screen):
+
+    def set_screen(self):
+        self.__initialize()
+        self.__play_music()
+
+    def __initialize(self):
+        pygame.init()
+        pygame.mixer.init()
+        pygame.display.set_caption(ScreenSettings.TITULO)
+
+    def __play_music(self):
+        self.music_path = path.join(path.dirname(__file__), '..','msc','caillou_theme_song.mp3')
+        pygame.mixer.music.load(self.music_path)
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(loops=-1)
+    
+    @property
+    def running(self):
+        return self._running
+    
+    @property
+    def running_phase(self):
+        return self._running_phase
+    
+    def run(self):
+        self._running = True
+        self._running_phase = True
+        while self.running and self.running_phase:
+            self.__update_events()
+            self.__update_screen()
+    
+
+    def __update_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self._running = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1:
+                    self._running_phase = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_2:
+                    self._running_phase = False
+    
+    def __background(self):
+        # Carrega assets
+        self.assets = load_assets(img_dir)
+        self.background = self.assets[InitialScreenSettings.BACKGROUND_IMG]
+        self.screen.blit(self.background, (0,0))
+    
+    def __update_screen(self):
+        self.__background()
+        pygame.display.flip()
 
 class EndScreen(Screen):
     
