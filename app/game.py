@@ -186,15 +186,7 @@ class Game(Screen):
                         elif event.key == pygame.K_d:
                             player.stop_walk_right()
                     # Verifica se as teclas 'm', 'k' ou 'l' foram pressionadas.
-                if keys[pygame.K_m]:
-                    if music_paused_pressed == 0:
-                        print("Music paused")
-                        pygame.mixer.music.pause()
-                        music_paused_pressed = 1
-                    else:
-                        print("Music resumed")
-                        pygame.mixer.music.unpause()
-                        music_paused_pressed = 0
+                keys = pygame.key.get_pressed()
 
                 # Aumenta o volume se a tecla 'k' for pressionada.
                 if keys[pygame.K_k]:
