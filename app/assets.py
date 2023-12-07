@@ -28,8 +28,8 @@ def load_assets(img_dir : str) -> dict:
 
     '''
     assets = {}
-    assets[PlayerConfig.WATERGIRL_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'watergirl.png')).convert_alpha()
-    assets[PlayerConfig.FIREBOY_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'fireboy.png')).convert_alpha()
+    assets[PlayerConfig.WATERGIRL_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'watergirlpenut.png')).convert_alpha()
+    assets[PlayerConfig.FIREBOY_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'fireboypenut.png')).convert_alpha()
     assets[Map.BLOCK] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'tile-block.png')).convert()
     assets[Map.PLATF] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'tile-wood.png')).convert()
     assets[Map.LAVA] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'lava.png')).convert()
