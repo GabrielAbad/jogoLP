@@ -141,45 +141,70 @@ class Game(Screen):
     def __update_events(self):
         # Ajusta a velocidade do jogo.
         self.clock.tick(ScreenSettings.FPS)
-        music_paused_pressed = 0
-
+        
         # Processa os eventos (mouse, teclado, botão, etc).
         for event in pygame.event.get():
             # Verifica se foi fechado.
             if event.type == pygame.QUIT:
                 self._running = False
+            for player in self.players:
+                if player.element == 'water':
+                    # Verifica se apertou alguma tecla.
+                    if event.type == pygame.KEYDOWN:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_LEFT:
+                            player.walk_to_left()
+                        if event.key == pygame.K_RIGHT:
+                            player.walk_to_right()
+                        if event.key == pygame.K_UP:
+                            player.jump()
 
-        # Verifica se apertou alguma tecla.
-        keys = pygame.key.get_pressed()
-        for player in self.players:
-            if player.element == 'water':
-                # Dependendo da tecla, altera o estado do jogador.
-                if keys[pygame.K_LEFT]:
-                    player.walk_to_left()
-                if keys[pygame.K_RIGHT]:
-                    player.walk_to_right()
-                if keys[pygame.K_UP]:
-                    player.jump()
+                    # Verifica se soltou alguma tecla.
+                    if event.type == pygame.KEYUP:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_LEFT:
+                            player.stop_walk_left()
+                        elif event.key == pygame.K_RIGHT:
+                            player.stop_walk_right()
+                
+                elif player.element == 'fire':
+                    # Verifica se apertou alguma tecla.
+                    if event.type == pygame.KEYDOWN:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_a:
+                            player.walk_to_left()
+                        if event.key == pygame.K_d:
+                            player.walk_to_right()
+                        if event.key == pygame.K_w:
+                            player.jump()
 
-        # Verifica se as teclas 'm', 'k' ou 'l' foram pressionadas.
-        if keys[pygame.K_m]:
-            if music_paused_pressed == 0:
-                print("Music paused")
-                pygame.mixer.music.pause()
-                music_paused_pressed = 1
-            else:
-                print("Music resumed")
-                pygame.mixer.music.unpause()
-                music_paused_pressed = 0
+                    # Verifica se soltou alguma tecla.
+                    if event.type == pygame.KEYUP:
+                        # Dependendo da tecla, altera o estado do jogador.
+                        if event.key == pygame.K_a:
+                            player.stop_walk_left()
+                        elif event.key == pygame.K_d:
+                            player.stop_walk_right()
+                    # Verifica se as teclas 'm', 'k' ou 'l' foram pressionadas.
+    if keys[pygame.K_m]:
+        if music_paused_pressed == 0:
+            print("Music paused")
+            pygame.mixer.music.pause()
+            music_paused_pressed = 1
+        else:
+            print("Music resumed")
+            pygame.mixer.music.unpause()
+            music_paused_pressed = 0
 
-        # Aumenta o volume se a tecla 'k' for pressionada.
-        if keys[pygame.K_k]:
-            pygame.mixer.music.set_volume(min(1.0, pygame.mixer.music.get_volume() + 0.1))
+    # Aumenta o volume se a tecla 'k' for pressionada.
+    if keys[pygame.K_k]:
+        pygame.mixer.music.set_volume(min(1.0, pygame.mixer.music.get_volume() + 0.1))
 
-        # Diminui o volume se a tecla 'l' for pressionada.
-        if keys[pygame.K_l]:
-            pygame.mixer.music.set_volume(max(0.0, pygame.mixer.music.get_volume() - 0.1))
+    # Diminui o volume se a tecla 'l' for pressionada.
+    if keys[pygame.K_l]:
+        pygame.mixer.music.set_volume(max(0.0, pygame.mixer.music.get_volume() - 0.1))
 
+        self.all_sprites.update()
 
     @property
     def result(self):
