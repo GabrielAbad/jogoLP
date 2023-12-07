@@ -4,7 +4,7 @@ Módulo responsável pelas assets do jogo.
 
 import pygame
 from os import path
-from .config import Map, PlayerConfig, InitialScreenSettings, EndScreenSettings
+from .config import Map, PlayerConfig, InitialScreenSettings, EndScreenSettings, ModeScreenSettings
 
     
 # Estabelece a pasta que contem as figuras.
@@ -37,4 +37,6 @@ def load_assets(img_dir : str) -> dict:
     assets[InitialScreenSettings.BACKGROUND_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'SUPER.jpg')).convert()
     assets[EndScreenSettings.WIN_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'youwin.jpg')).convert()
     assets[EndScreenSettings.GAMEOVER_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'gameover.jpg')).convert()
+    assets[ModeScreenSettings.BACKGROUND_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'mode.jpg')).convert()
+
     return assets
