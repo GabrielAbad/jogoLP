@@ -49,19 +49,37 @@ class Screen(ABC):
 
 
 class Game(Screen):
+    """
+    Representa a tela principal do jogo.
+
+    Esta classe controla a lógica e a execução do jogo.
+    """
 
     def __init__(self, screen):
+        """
+        Inicializa a tela do jogo.
+
+        Args:
+            screen (pygame.Surface): A superfície onde o jogo será renderizado.
+        """
         super().__init__(screen)
         self._countwaterwin = 0
         self._countfirewin = 0
     
     def set_screen(self):
+        """
+        Configura a tela do jogo.
+
+        Esta função inicializa o Pygame, configura a tela, carrega assets e cria os sprites.
+        """
         self.__initialize()
         self.__create_sprites()
         self.__play_music()
     
     def __initialize(self):
-        # Inicialização do Pygame.
+        """
+        Inicializa o Pygame e configurações iniciais do jogo.
+        """
         pygame.init()
         pygame.mixer.init()
 
@@ -87,6 +105,11 @@ class Game(Screen):
         self.waterdoor = pygame.Rect(120,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
 
     def __create_sprites(self):
+        """
+        Cria os sprites do jogo.
+
+        Esta função cria os jogadores, cria os tiles do mapa e os adiciona aos grupos de sprites.
+        """
         
         self.fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava,self.water,'fire')
         self.watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava,self.water ,'water')
@@ -112,6 +135,9 @@ class Game(Screen):
         self.all_sprites.add(player for player in self.players)
     
     def __play_music(self):
+        """
+        Toca a música de fundo do jogo.
+        """
         self.music_path = path.join(path.dirname(__file__), '..', 'msc','bglmudou.mp3')
         pygame.mixer.music.load(self.music_path)
         pygame.mixer.music.set_volume(0.5)
@@ -119,17 +145,40 @@ class Game(Screen):
 
     @property
     def running(self):
+        """
+        Propriedade que indica se o jogo está em execução.
+
+        Returns:
+            bool: True se o jogo está em execução, False caso contrário.
+        """
         return self._running
     
     @property
     def running_phase(self):
+        """
+        Propriedade que indica se a fase do jogo está em execução.
+
+        Returns:
+            bool: True se a fase está em execução, False caso contrário.
+        """
         return self._running_phase
     
     @property
     def phase_to_go(self):
+        """
+        Propriedade que retorna a próxima fase do jogo.
+
+        Returns:
+            int: O número da próxima fase.
+        """
         return self._phase_to_go
 
     def run(self):
+        """
+        Inicia o loop principal do jogo.
+
+        Este método atualiza os eventos, a tela do jogo, verifica as condições de fim de jogo e de vitória.
+        """
         self._running_phase = True
         self._running = True
         while self._running and self._running_phase:
@@ -139,6 +188,11 @@ class Game(Screen):
             self.__win()
 
     def __update_events(self):
+        """
+        Atualiza os eventos do jogo.
+
+        Este método processa eventos como teclas pressionadas, cliques do mouse, etc.
+        """
         # Ajusta a velocidade do jogo.
         self.clock.tick(ScreenSettings.FPS)
         
@@ -200,9 +254,18 @@ class Game(Screen):
 
     @property
     def result(self):
+        """
+        Retorna o resultado do jogo.
+
+        Returns:
+            str: O resultado do jogo (ganhou ou perdeu).
+        """
         return self._result
 
     def __gameover(self):
+        """
+        Verifica se o jogo chegou ao fim (game over).
+        """
         for player in self.players:
             if not player.life:
                 self._phase_to_go = 2
@@ -210,6 +273,9 @@ class Game(Screen):
                 self._result = 'lost'
 
     def __win(self):
+        """
+        Verifica se houve vitória no jogo.
+        """
         if self.watergirl.rect.left == self.waterdoor.left and self.watergirl.highest_y == self.waterdoor.bottom:
             self._countwaterwin += 1
         if self.fireboy.rect.left == self.firedoor.left and self.fireboy.highest_y == self.firedoor.bottom:
@@ -222,6 +288,11 @@ class Game(Screen):
             self._countfirewin = 0
 
     def __update_screen(self):
+        """
+        Atualiza a tela do jogo.
+
+        Este método desenha todos os sprites na tela, atualiza a tela e realiza a troca de buffers.
+        """
         
         # Preenche o fundo de branco
         self.screen.fill(Colors.WHITE)
@@ -291,17 +362,33 @@ class InitialScreen(Screen):
 
 
 class ModeScreen(Screen):
+    """
+    Representa a tela de seleção de modo do jogo.
+
+    Nesta tela, o jogador pode escolher entre diferentes modos de jogo.
+    """
 
     def set_screen(self):
+        """
+        Configura a tela do modo de jogo.
+
+        Esta função inicializa o Pygame, configura a tela e inicia a música de fundo.
+        """
         self.__initialize()
         self.__play_music()
 
     def __initialize(self):
+        """
+        Inicializa o Pygame e configurações iniciais do modo de jogo.
+        """
         pygame.init()
         pygame.mixer.init()
         pygame.display.set_caption(ScreenSettings.TITULO)
 
     def __play_music(self):
+        """
+        Toca a música de fundo do modo de jogo.
+        """
         self.music_path = path.join(path.dirname(__file__), '..','msc','caillou_theme_song.mp3')
         pygame.mixer.music.load(self.music_path)
         pygame.mixer.music.set_volume(0.5)
@@ -309,13 +396,30 @@ class ModeScreen(Screen):
     
     @property
     def running(self):
+        """
+        Propriedade que indica se o jogo está em execução.
+
+        Returns:
+            bool: True se o jogo está em execução, False caso contrário.
+        """
         return self._running
     
     @property
     def running_phase(self):
+        """
+        Propriedade que indica se a fase do jogo está em execução.
+
+        Returns:
+            bool: True se a fase está em execução, False caso contrário.
+        """
         return self._running_phase
     
     def run(self):
+        """
+        Inicia o loop principal do modo de jogo.
+
+        Este método atualiza os eventos e a tela do modo de jogo.
+        """
         self._running = True
         self._running_phase = True
         while self.running and self.running_phase:
@@ -324,6 +428,11 @@ class ModeScreen(Screen):
     
 
     def __update_events(self):
+        """
+        Atualiza os eventos do modo de jogo.
+
+        Este método processa eventos como teclas pressionadas para selecionar o modo de jogo.
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self._running = False
@@ -336,42 +445,89 @@ class ModeScreen(Screen):
                     self._running_phase = False
     
     def __background(self):
+        """
+        Define o background da tela do modo de jogo.
+        """
         # Carrega assets
         self.assets = load_assets(img_dir)
         self.background = self.assets[ModeScreenSettings.BACKGROUND_IMG]
         self.screen.blit(self.background, (0,0))
     
     def __update_screen(self):
+        """
+        Atualiza a tela do modo de jogo.
+
+        Este método desenha o background na tela do modo de jogo.
+        """
         self.__background()
         pygame.display.flip()
 
 class EndScreen(Screen):
+    """
+    Representa a tela de fim de jogo.
+
+    Nesta tela, é exibido o resultado final do jogo (vitória ou derrota).
+    """
     
     def __init__(self, screen):
+        """
+        Inicializa a tela de fim de jogo.
+
+        Args:
+            screen (pygame.Surface): A superfície onde a tela de fim de jogo será renderizada.
+        """
         super().__init__(screen)
         self._result = ''
 
     def set_screen(self):
+        """
+        Configura a tela de fim de jogo.
+
+        Esta função inicializa o Pygame, configura a tela e interrompe a música de fundo.
+        """
         self.__initialize()
         self.__play_music()
 
     def __initialize(self):
+        """
+        Inicializa o Pygame e configurações iniciais da tela de fim de jogo.
+        """
         pygame.init()
         pygame.mixer.init()
         pygame.display.set_caption(ScreenSettings.TITULO)
     
     def __play_music(self):
+        """
+        Interrompe a reprodução da música de fundo na tela de fim de jogo.
+        """
         pygame.mixer.music.stop()
 
     @property
     def running(self):
+        """
+        Propriedade que indica se o jogo está em execução.
+
+        Returns:
+            bool: True se o jogo está em execução, False caso contrário.
+        """
         return self._running
     
     @property
     def running_phase(self):
+        """
+        Propriedade que indica se a fase do jogo está em execução.
+
+        Returns:
+            bool: True se a fase está em execução, False caso contrário.
+        """
         return self._running_phase
 
     def run(self):
+        """
+        Inicia o loop principal da tela de fim de jogo.
+
+        Este método atualiza os eventos e a tela da tela de fim de jogo.
+        """
         self._running = True
         self._running_phase = True
         while self.running and self.running_phase:
@@ -379,6 +535,9 @@ class EndScreen(Screen):
             self.__update_screen()
     
     def __background(self):
+        """
+        Define o background da tela de fim de jogo baseado no resultado (vitória ou derrota).
+        """
         self.assets = load_assets(img_dir)
         if self._result == 'lost':
             self.background = self.assets[EndScreenSettings.GAMEOVER_IMG]
@@ -388,17 +547,39 @@ class EndScreen(Screen):
             self.screen.blit(self.background, (0,0))
    
     def __update_screen(self):
+        """
+        Atualiza a tela da tela de fim de jogo.
+
+        Este método desenha o background na tela de fim de jogo.
+        """
         self.__background()
         pygame.display.flip()
 
     def setresult(self, result):
+        """
+        Define o resultado do jogo.
+
+        Args:
+            result (str): Resultado do jogo ('win' para vitória ou 'lost' para derrota).
+        """
         self._result = result
 
     @property
     def phase_to_go(self):
+        """
+        Retorna a fase para a qual o jogo deve ir após a tela de fim de jogo.
+
+        Returns:
+            int: Número da fase seguinte.
+        """
         return self._phase_to_go
     
     def __update_events(self):
+        """
+        Atualiza os eventos da tela de fim de jogo.
+
+        Este método processa eventos como teclas pressionadas para escolher a próxima fase ou sair do jogo.
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self._running = False
