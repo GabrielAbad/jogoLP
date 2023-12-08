@@ -10,41 +10,22 @@ try:
     game = Game(screen)
     end = EndScreen(screen)
 
-    phases = [tela_inicial,tela_modo, game, end]
+    phases = [tela_inicial, tela_modo, game, end]
 
     phase = 0
-    while phase <= len(phases):
-        if phase == 0:
-            phases[phase].set_screen()
-            phases[phase].run()
-            if not phases[phase].running:
-                pygame.quit()
-            if not phases[phase].running_phase:
-                phase += 1
-        if phase == 1:
-            phases[phase].set_screen()
-            phases[phase].run()
-            if not phases[phase].running:
-                pygame.quit()
-            if not phases[phase].running_phase:
-                phase += 1
-        if phase == 2:
-            phases[phase].set_screen()
-            phases[phase].run()
-            if not phases[phase].running:
-                phase += 1
-            if not phases[phase].running_phase:
-                phases[phases[phase].phase_to_go].setresult(phases[phase].result)
-                phase = phases[phase].phase_to_go
-            
-        if phase == 3:
-            phases[phase].set_screen()
-            phases[phase].run()
-            if not phases[phase].running_phase:
-                phase = phases[phase].phase_to_go
-            if not phases[phase].running:
-                phase += 1
+    while phase < len(phases):
+        current_phase = phases[phase]
+        current_phase.set_screen()
+        current_phase.run()
 
+        if not current_phase.running:
+            pygame.quit()
+            break
+
+        if not current_phase.running_phase:
+            if phase == 2:
+                phases[phases[phase].phase_to_go].setresult(phases[phase].result)
+            phase = current_phase.phase_to_go
 
 except pygame.error:
     print("O jogo foi fechado.")
