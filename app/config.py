@@ -79,7 +79,7 @@ class ScreenSettings:
         >>> print(ScreenSettings.HEIGHT)   # Saída: 600
         >>> print(ScreenSettings.FPS)      # Saída: 60
     """
-    TITULO = 'Caillou' # Titulo que aprece na parte de cima da tela
+    TITULO = 'oi' # Titulo que aprece na parte de cima da tela
     WIDTH = 480 # Largura da tela
     HEIGHT = 600 # Altura da tela
     FPS = 60 # Frames por segundo

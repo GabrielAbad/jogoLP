@@ -9,6 +9,7 @@ try:
     game = Game(screen)
     end = EndScreen(screen)
 
+
     phases = [tela_inicial, game, end]
 
     phase = 0
