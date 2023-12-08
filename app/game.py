@@ -2,7 +2,7 @@ from abc import abstractmethod, ABC
 import pygame
 from .assets import load_assets, img_dir
 from .player import Player
-from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig, InitialScreenSettings, EndScreenSettings
+from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig, InitialScreenSettings, EndScreenSettings,ModeScreenSettings
 from .tiles import Tiles
 from os import path
 
@@ -338,7 +338,7 @@ class ModeScreen(Screen):
     def __background(self):
         # Carrega assets
         self.assets = load_assets(img_dir)
-        self.background = self.assets[InitialScreenSettings.BACKGROUND_IMG]
+        self.background = self.assets[ModeScreenSettings.BACKGROUND_IMG]
         self.screen.blit(self.background, (0,0))
     
     def __update_screen(self):
@@ -377,7 +377,7 @@ class EndScreen(Screen):
         while self.running and self.running_phase:
             self.__update_events()
             self.__update_screen()
-    #TODO
+    
     def __background(self):
         self.assets = load_assets(img_dir)
         if self._result == 'lost':
