@@ -1,10 +1,10 @@
 # Jogo Caillou
 
-Bem-vindo ao repositório do jogo Caillou! Este é um projeto desenvolvido como parte da disciplina de Linguagem de Programação (LP). O jogo é inspirado no personagem infantil Caillou e foi criado como uma aplicação prática dos conceitos aprendidos durante o curso.
+Bem-vindo ao repositório do jogo FireWater! Este é um projeto desenvolvido como parte da disciplina de Linguagem de Programação (LP). FireWater ,inspirado no jogo Fireboy & Watergirl, foi criado como uma aplicação prática dos conceitos aprendidos durante o curso.
 
 ## Descrição do Jogo
 
-O jogo Caillou é uma aventura interativa em que se pode escolher entre o modo single player e dual player.
+O jogo FireWater é uma aventura interativa em que se pode escolher entre o modo single player e dual player.
 
 No modo single player, o jogador controla somente um personagem.
 
@@ -18,9 +18,9 @@ A intensidade da música pode ser controlada, a tecla K aumenta o volume,
 
 a tecla L diminui.
 
-Cuidado, cair na lava (personagem de água) ou cair na água (personagem de fogo) leva ao fim do jogo.
+Cuidado, cair na lava com watergirl ou cair na água fireboy leva ao fim do jogo.
 
-Ganha aquele que conseguir chegar no topo mais rápido.
+O objetivo é levar cada personagem à sua respectiva porta.
 
 
 ## Como Jogar
