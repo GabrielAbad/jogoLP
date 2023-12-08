@@ -34,7 +34,7 @@ def load_assets(img_dir : str) -> dict:
     assets[Map.PLATF] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'tile-wood.png')).convert()
     assets[Map.LAVA] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'lava.png')).convert()
     assets[Map.WATER] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'water.jpg')).convert()
-    assets[InitialScreenSettings.BACKGROUND_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'SUPER.jpg')).convert()
+    assets[InitialScreenSettings.BACKGROUND_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'startscreampenut.jpg')).convert()
     assets[EndScreenSettings.WIN_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'youwin.jpg')).convert()
     assets[EndScreenSettings.GAMEOVER_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'gameover.jpg')).convert()
     assets[ModeScreenSettings.BACKGROUND_IMG] = pygame.image.load(path.join(path.dirname(__file__),img_dir, 'mode.jpg')).convert()
