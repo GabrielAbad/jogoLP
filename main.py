@@ -43,7 +43,7 @@ try:
             if not phases[phase].running_phase:
                 phase = phases[phase].phase_to_go
             if not phases[phase].running:
-                phase += 3
+                phase += 1
 
 
 except pygame.error:
