@@ -295,5 +295,5 @@ class Player(pygame.sprite.Sprite):
         do mapa, ou caia na água se for o fireboy, ou caia no fogo se for a
         watergirl.
         """
-        if self.rect.bottom >= 659 or self.health == 0:
+        if self.rect.bottom >= 859 or self.health == 0:
             self.life = False

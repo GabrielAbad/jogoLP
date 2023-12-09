@@ -2,6 +2,25 @@ from app.config import ScreenSettings
 from app.game import InitialScreen, Game, EndScreen, ModeScreen
 import pygame
 
+libraries = [
+    "pygame",  
+    "numpy",   
+    "pandas",  
+    "matplotlib"  
+]
+missing_libraries = []
+
+for lib in libraries:
+    try:
+        __import__(lib)
+    except ImportError:
+        print(f"{lib} Não foi instalada.")
+        missing_libraries.append(lib)
+
+if missing_libraries:
+    print(f"As seguintes biblitecas não estão presentes: {', '.join(missing_libraries)}")
+
+
 try:
     screen = pygame.display.set_mode((ScreenSettings.WIDTH, ScreenSettings.HEIGHT))
 
@@ -14,8 +33,9 @@ try:
 
     phase = 0
     while phase < len(phases):
-
+        print(f"Current Phase: {phase}")  # Adding this line to print the current phase
         if phase == 0:
+            #tela inicial
             phases[phase].set_screen()
             phases[phase].run()
             if not phases[phase].running:
