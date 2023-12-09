@@ -11,10 +11,18 @@ class Screen(ABC):
     """
     Classe abstrata que representa uma tela de jogo ou uma tela estática.
 
-    Atributes:
-    ----------
-    screen : pygame.display
-        Para começar o pygame sempre precisa de uma interface
+    Attributes:
+        screen (pygame.display): A interface pygame para renderizar a tela.
+
+    Methods:
+        __init__(self, screen: pygame.display):
+            Construtor para inicializar o objeto que herda de Screen.
+
+        set_screen(self):
+            Método abstrato para definir o conteúdo da tela.
+
+        run(self):
+            Método abstrato para executar a funcionalidade da tela.
     """
 
     def __init__(self, screen:pygame.display):
@@ -53,6 +61,70 @@ class Game(Screen):
     Representa a tela principal do jogo.
 
     Esta classe controla a lógica e a execução do jogo.
+
+    Attributes:
+        screen (pygame.Surface): A superfície onde o jogo será renderizado.
+        _countwaterwin (int): Contador de vitórias da água.
+        _countfirewin (int): Contador de vitórias do fogo.
+
+    Methods:
+        __init__(self, screen):
+            Inicializa a tela do jogo.
+
+            Args:
+                screen (pygame.Surface): A superfície onde o jogo será renderizado.
+
+        set_screen(self):
+            Configura a tela do jogo.
+            Esta função inicializa o Pygame, configura a tela, carrega assets e cria os sprites.
+
+        __initialize(self):
+            Inicializa o Pygame e configurações iniciais do jogo.
+
+        __create_sprites(self):
+            Cria os sprites do jogo.
+            Esta função cria os jogadores, cria os tiles do mapa e os adiciona aos grupos de sprites.
+
+        __play_music(self):
+            Toca a música de fundo do jogo.
+
+        running(self):
+            Propriedade que indica se o jogo está em execução.
+            Returns:
+                bool: True se o jogo está em execução, False caso contrário.
+
+        running_phase(self):
+            Propriedade que indica se a fase do jogo está em execução.
+            Returns:
+                bool: True se a fase está em execução, False caso contrário.
+
+        phase_to_go(self):
+            Propriedade que retorna a próxima fase do jogo.
+            Returns:
+                int: O número da próxima fase.
+
+        run(self):
+            Inicia o loop principal do jogo.
+            Este método atualiza os eventos, a tela do jogo, verifica as condições de fim de jogo e de vitória.
+
+        __update_events(self):
+            Atualiza os eventos do jogo.
+            Este método processa eventos como teclas pressionadas, cliques do mouse, etc.
+
+        result(self):
+            Retorna o resultado do jogo.
+            Returns:
+                str: O resultado do jogo (ganhou ou perdeu).
+
+        __gameover(self):
+            Verifica se o jogo chegou ao fim (game over).
+
+        __win(self):
+            Verifica se houve vitória no jogo.
+
+        __update_screen(self):
+            Atualiza a tela do jogo.
+            Este método desenha todos os sprites na tela, atualiza a tela e realiza a troca de buffers.
     """
 
     def __init__(self, screen):
@@ -275,15 +347,15 @@ class Game(Screen):
     def __win(self):
         """
         Verifica se houve vitória no jogo.
+
+        Com base na distância euclidiana entre o personagem 
+        
+        e a porta da vitória.
         """
         coord_watergirl = (self.watergirl.rect.x,self.watergirl.rect.y)
         coord_waterdoor = (self.waterdoor.x,self.waterdoor.y)
         coord_fireboy = (self.fireboy.rect.x,self.fireboy.rect.y)
         coord_firedoor = (self.firedoor.x, self.firedoor.y)
-
-
-
-
 
         if dist(coord_watergirl,coord_waterdoor)<5:
             self._countwaterwin += 1
@@ -318,6 +390,51 @@ class Game(Screen):
 
 
 class InitialScreen(Screen):
+    """
+    Representa a tela inicial do jogo.
+
+    Esta tela exibe uma imagem de fundo e reproduz uma música de introdução. O jogador pode pressionar a tecla
+    'Enter' para avançar para a próxima fase ou sair do jogo.
+
+    Attributes:
+        screen (pygame.Surface): A superfície onde a tela será renderizada.
+
+    Methods:
+        set_screen(self):
+            Configura a tela inicial.
+            Esta função inicializa o Pygame, configura a tela, e inicia a música de fundo.
+
+        __initialize(self):
+            Inicializa o Pygame e configurações iniciais da tela inicial.
+
+        __play_music(self):
+            Toca a música de introdução.
+
+        running(self):
+            Propriedade que indica se a tela está em execução.
+            Returns:
+                bool: True se a tela está em execução, False caso contrário.
+
+        running_phase(self):
+            Propriedade que indica se a fase da tela está em execução.
+            Returns:
+                bool: True se a fase está em execução, False caso contrário.
+
+        run(self):
+            Inicia o loop principal da tela inicial.
+            Este método atualiza os eventos e a tela da tela inicial.
+
+        __update_events(self):
+            Atualiza os eventos da tela inicial.
+            Este método processa eventos como teclas pressionadas para avançar ou sair do jogo.
+
+        __background(self):
+            Define o fundo da tela inicial com uma imagem.
+
+        __update_screen(self):
+            Atualiza a tela inicial.
+            Este método desenha o fundo na tela inicial.
+    """
 
     def set_screen(self):
         self.__initialize()
@@ -476,6 +593,40 @@ class EndScreen(Screen):
     Representa a tela de fim de jogo.
 
     Nesta tela, é exibido o resultado final do jogo (vitória ou derrota).
+
+    Atributos:
+    ----------
+    screen : pygame.Surface
+        A superfície onde a tela de fim de jogo será renderizada.
+    _result : str
+        O resultado do jogo ('win' para vitória ou 'lost' para derrota).
+
+    Métodos:
+    --------
+    set_screen()
+        Configura a tela de fim de jogo, inicializando o Pygame, configurando a tela e interrompendo a música de fundo.
+
+    run()
+        Inicia o loop principal da tela de fim de jogo, atualizando os eventos e a tela da tela de fim de jogo.
+
+    __initialize()
+        Inicializa o Pygame e configurações iniciais da tela de fim de jogo.
+
+    __play_music()
+        Interrompe a reprodução da música de fundo na tela de fim de jogo.
+
+    __background()
+        Define o background da tela de fim de jogo baseado no resultado (vitória ou derrota).
+
+    __update_screen()
+        Atualiza a tela da tela de fim de jogo, desenhando o background na tela.
+
+    set_result(result: str)
+        Define o resultado do jogo.
+
+    @property
+    phase_to_go() -> int
+        Retorna a fase para a qual o jogo deve ir após a tela de fim de jogo.
     """
     
     def __init__(self, screen):
