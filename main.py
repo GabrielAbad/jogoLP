@@ -6,7 +6,7 @@ libraries = [
     "pygame",  
     "numpy",   
     "pandas",  
-    "matplotlib",  
+    "matplotlib"  
 ]
 missing_libraries = []
 
