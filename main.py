@@ -35,6 +35,7 @@ try:
     while phase < len(phases):
         print(f"Current Phase: {phase}")  # Adding this line to print the current phase
         if phase == 0:
+            #tela inicial
             phases[phase].set_screen()
             phases[phase].run()
             if not phases[phase].running:
@@ -43,6 +44,8 @@ try:
                 phase += 1
 
         if phase == 1:
+            #selecionar modo (1p, ou 2p)
+
             phases[phase].set_screen()
             phases[phase].run()
             if not phases[phase].running:
@@ -53,6 +56,7 @@ try:
                 phase = phases[phase].phase_to_go
             
         if phase == 2:
+            #selecionar modo (1p, ou 2p)
             phases[phase].set_screen()
             phases[phase].run()
             if not phases[phase].running_phase:
