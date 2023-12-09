@@ -14,7 +14,7 @@ try:
 
     phase = 0
     while phase < len(phases):
-
+        print(f"Current Phase: {phase}")  # Adding this line to print the current phase
         if phase == 0:
             phases[phase].set_screen()
             phases[phase].run()
