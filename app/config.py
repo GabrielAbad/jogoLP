@@ -96,10 +96,8 @@ class InitialScreenSettings:
 
     Example:
     --------
-    Acesso a constante:
-        
+    Acesso à constante:
         >>> print(InitialScreenSettings.BACKGROUND_IMG)   # Saída: 'initial_screen_background'
-   
     """
     #Chave do dicionario de assets
     BACKGROUND_IMG = 'initial_screen_bakground'
@@ -135,12 +133,12 @@ class ModeScreenSettings:
     Constants:
     -----------
     BACKGROUND_IMG : str
-        Chave do dicionário de assets que representa a imagem de fundo
+        Chave do dicionário de assets que representa a imagem de fundo do modo de jogo.
     
     Example:
     --------
-    Acesso às constantes:
-        >>> print(EndScreenSettings.BACKGROUND_IMG)        # Saída: 'mode_img'
+    Acesso à constante:
+        >>> print(ModeScreenSettings.BACKGROUND_IMG)   # Saída: 'mode_img'
     """
     BACKGROUND_IMG = 'mode_img'
 
@@ -310,21 +308,21 @@ class PlayerConfig:
 
 class DoorConfig:
     """
-    Classe responsável por armazenar as configurações da porta no jogo.
+    Classe responsável por armazenar as configurações das portas no jogo.
 
     Constants:
     ----------
     DOOR_HEIGHT : int
-        Altura da porta.
+        Altura das portas no jogo.
 
     DOOR_WIDTH : int
-        Largura da porta.
+        Largura das portas no jogo.
 
     Example:
     --------
-    Acesso às constantes (saída pode ser alterada dependendo da config desejada):
-        >>> print(DoorConfig.DOOR_HEIGHT)   # Saída: 60
-        >>> print(DoorConfig.DOOR_WIDTH)    # Saída: 40
+    Acesso às constantes:
+        >>> print(DoorConfig.DOOR_HEIGHT)   # Exibe a altura das portas (Saída: 60)
+        >>> print(DoorConfig.DOOR_WIDTH)    # Exibe a largura das portas (Saída: 40)
     """
 
     DOOR_HEIGHT = 60
