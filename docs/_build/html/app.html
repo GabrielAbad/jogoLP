@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app package &mdash; Pygame Fireboy Watergirl Documentation  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="app" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Pygame Fireboy Watergirl Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">app</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">app package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.assets">app.assets module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.assets.load_assets"><code class="docutils literal notranslate"><span class="pre">load_assets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.config">app.config module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.Colors"><code class="docutils literal notranslate"><span class="pre">Colors</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.DoorConfig"><code class="docutils literal notranslate"><span class="pre">DoorConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.EndScreenSettings"><code class="docutils literal notranslate"><span class="pre">EndScreenSettings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.InitialScreenSettings"><code class="docutils literal notranslate"><span class="pre">InitialScreenSettings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.Map"><code class="docutils literal notranslate"><span class="pre">Map</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.ModeScreenSettings"><code class="docutils literal notranslate"><span class="pre">ModeScreenSettings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.PlayerConfig"><code class="docutils literal notranslate"><span class="pre">PlayerConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.ScreenSettings"><code class="docutils literal notranslate"><span class="pre">ScreenSettings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.config.TilesConfig"><code class="docutils literal notranslate"><span class="pre">TilesConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.game">app.game module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.game.EndScreen"><code class="docutils literal notranslate"><span class="pre">EndScreen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.game.Game"><code class="docutils literal notranslate"><span class="pre">Game</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.game.InitialScreen"><code class="docutils literal notranslate"><span class="pre">InitialScreen</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#app.game.Screen"><code class="docutils literal notranslate"><span class="pre">Screen</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.player">app.player module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.player.Player"><code class="docutils literal notranslate"><span class="pre">Player</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app.tiles">app.tiles module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#app.tiles.Tiles"><code class="docutils literal notranslate"><span class="pre">Tiles</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pygame Fireboy Watergirl Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">app</a></li>
+      <li class="breadcrumb-item active">app package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-package">
+<h1>app package<a class="headerlink" href="#app-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-app.assets">
+<span id="app-assets-module"></span><h2>app.assets module<a class="headerlink" href="#module-app.assets" title="Link to this heading"></a></h2>
+<p>Módulo responsável pelo gerenciamento dos recursos visuais do jogo.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.assets.load_assets">
+<span class="sig-prename descclassname"><span class="pre">app.assets.</span></span><span class="sig-name descname"><span class="pre">load_assets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#app.assets.load_assets" title="Link to this definition"></a></dt>
+<dd><p>Carrega e armazena as imagens dos blocos e personagens do jogo.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>img_dir<span class="classifier">str</span></dt><dd><p>O caminho para o diretório que contém as imagens.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>assets<span class="classifier">dict</span></dt><dd><p>Um dicionário onde as chaves representam nomes significativos para blocos e personagens, 
+e os valores são as imagens carregadas dos blocos e personagens.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-app.config">
+<span id="app-config-module"></span><h2>app.config module<a class="headerlink" href="#module-app.config" title="Link to this heading"></a></h2>
+<p>Módulo responsável pelas configurações básicas do jogo e estruturas auxiliares 
+para a construção de outras funcionalidades do programa.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.Colors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">Colors</span></span><a class="headerlink" href="#app.config.Colors" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que armazena a representação RGB das cores em variáveis significativas.</p>
+<section id="constants">
+<h3>Constants:<a class="headerlink" href="#constants" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>WHITE<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor branca. Valor: (255, 255, 255).</p>
+</dd>
+<dt>BLACK<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor preta. Valor: (0, 0, 0).</p>
+</dd>
+<dt>RED<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor vermelha. Valor: (255, 0, 0).</p>
+</dd>
+<dt>GREEN<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor verde. Valor: (0, 255, 0).</p>
+</dd>
+<dt>BLUE<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor azul. Valor: (0, 0, 255).</p>
+</dd>
+<dt>YELLOW<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor amarela. Valor: (255, 255, 0).</p>
+</dd>
+<dt>BROWN<span class="classifier">tuple</span></dt><dd><p>Representação RGB da cor marrom. Valor: (139, 69, 19).</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<dl>
+<dt>Acesso às constantes:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>    <span class="c1"># Saída: (255, 255, 255)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>    <span class="c1"># Saída: (0, 0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">RED</span><span class="p">)</span>      <span class="c1"># Saída: (255, 0, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">GREEN</span><span class="p">)</span>    <span class="c1"># Saída: (0, 255, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>     <span class="c1"># Saída: (0, 0, 255)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">YELLOW</span><span class="p">)</span>   <span class="c1"># Saída: (255, 255, 0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Colors</span><span class="o">.</span><span class="n">BROWN</span><span class="p">)</span>    <span class="c1"># Saída: (139, 69, 19)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.BLACK">
+<span class="sig-name descname"><span class="pre">BLACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></em><a class="headerlink" href="#app.config.Colors.BLACK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.BLUE">
+<span class="sig-name descname"><span class="pre">BLUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">255)</span></em><a class="headerlink" href="#app.config.Colors.BLUE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.BROWN">
+<span class="sig-name descname"><span class="pre">BROWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(139,</span> <span class="pre">69,</span> <span class="pre">19)</span></em><a class="headerlink" href="#app.config.Colors.BROWN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.GREEN">
+<span class="sig-name descname"><span class="pre">GREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(0,</span> <span class="pre">255,</span> <span class="pre">0)</span></em><a class="headerlink" href="#app.config.Colors.GREEN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.RED">
+<span class="sig-name descname"><span class="pre">RED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(255,</span> <span class="pre">0,</span> <span class="pre">0)</span></em><a class="headerlink" href="#app.config.Colors.RED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.WHITE">
+<span class="sig-name descname"><span class="pre">WHITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></em><a class="headerlink" href="#app.config.Colors.WHITE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Colors.YELLOW">
+<span class="sig-name descname"><span class="pre">YELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(255,</span> <span class="pre">255,</span> <span class="pre">0)</span></em><a class="headerlink" href="#app.config.Colors.YELLOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.DoorConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">DoorConfig</span></span><a class="headerlink" href="#app.config.DoorConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por armazenar as configurações das portas no jogo.</p>
+<section id="id1">
+<h3>Constants:<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>DOOR_HEIGHT<span class="classifier">int</span></dt><dd><p>Altura das portas no jogo.</p>
+</dd>
+<dt>DOOR_WIDTH<span class="classifier">int</span></dt><dd><p>Largura das portas no jogo.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Example:<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<dl>
+<dt>Acesso às constantes:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">DoorConfig</span><span class="o">.</span><span class="n">DOOR_HEIGHT</span><span class="p">)</span>   <span class="c1"># Exibe a altura das portas (Saída: 60)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">DoorConfig</span><span class="o">.</span><span class="n">DOOR_WIDTH</span><span class="p">)</span>    <span class="c1"># Exibe a largura das portas (Saída: 40)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.DoorConfig.DOOR_HEIGHT">
+<span class="sig-name descname"><span class="pre">DOOR_HEIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60</span></em><a class="headerlink" href="#app.config.DoorConfig.DOOR_HEIGHT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.DoorConfig.DOOR_WIDTH">
+<span class="sig-name descname"><span class="pre">DOOR_WIDTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#app.config.DoorConfig.DOOR_WIDTH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.EndScreenSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">EndScreenSettings</span></span><a class="headerlink" href="#app.config.EndScreenSettings" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por armazenar as configurações da tela de fim de jogo.</p>
+<section id="id3">
+<h3>Constants:<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>WIN_IMG<span class="classifier">str</span></dt><dd><p>Chave do dicionário de assets que representa a imagem de vitória na tela final.</p>
+</dd>
+<dt>GAMEOVER_IMG<span class="classifier">str</span></dt><dd><p>Chave do dicionário de assets que representa a imagem de derrota/game over na tela final.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Example:<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<dl>
+<dt>Acesso às constantes:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">EndScreenSettings</span><span class="o">.</span><span class="n">WIN_IMG</span><span class="p">)</span>        <span class="c1"># Saída: &#39;win_img&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">EndScreenSettings</span><span class="o">.</span><span class="n">GAMEOVER_IMG</span><span class="p">)</span>   <span class="c1"># Saída: &#39;gameover_img&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.EndScreenSettings.GAMEOVER_IMG">
+<span class="sig-name descname"><span class="pre">GAMEOVER_IMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'gameover_img'</span></em><a class="headerlink" href="#app.config.EndScreenSettings.GAMEOVER_IMG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.EndScreenSettings.WIN_IMG">
+<span class="sig-name descname"><span class="pre">WIN_IMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'win_img'</span></em><a class="headerlink" href="#app.config.EndScreenSettings.WIN_IMG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.InitialScreenSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">InitialScreenSettings</span></span><a class="headerlink" href="#app.config.InitialScreenSettings" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por armazenar as configurações da tela inicial do jogo.</p>
+<section id="id5">
+<h3>Constants:<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>BACKGROUND_IMG<span class="classifier">str</span></dt><dd><p>Chave do dicionário de assets que representa a imagem de fundo da tela inicial.</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h3>Example:<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<dl>
+<dt>Acesso à constante:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">InitialScreenSettings</span><span class="o">.</span><span class="n">BACKGROUND_IMG</span><span class="p">)</span>   <span class="c1"># Saída: &#39;initial_screen_background&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.InitialScreenSettings.BACKGROUND_IMG">
+<span class="sig-name descname"><span class="pre">BACKGROUND_IMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'initial_screen_bakground'</span></em><a class="headerlink" href="#app.config.InitialScreenSettings.BACKGROUND_IMG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.Map">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">Map</span></span><a class="headerlink" href="#app.config.Map" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável pela estrutura do mapa e configuração da gravidade do jogo.</p>
+<section id="id7">
+<h3>Constants:<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>BLOCK<span class="classifier">int</span></dt><dd><p>Representa um bloco no mapa e a chave no dicionário de assets. Valor numérico: 0.</p>
+</dd>
+<dt>PLATF<span class="classifier">int</span></dt><dd><p>Representa uma plataforma no mapa e a chave no dicionário de assets. Valor numérico: 1.</p>
+</dd>
+<dt>LAVA<span class="classifier">int</span></dt><dd><p>Representa a lava no mapa e a chave no dicionário de assets. Valor numérico: 2.</p>
+</dd>
+<dt>WATER<span class="classifier">int</span></dt><dd><p>Representa a água no mapa e a chave no dicionário de assets. Valor numérico: 3.</p>
+</dd>
+<dt>EMPTY<span class="classifier">int</span></dt><dd><p>Representa uma posição vazia no mapa e a chave no dicionário de assets. Valor numérico: -1.</p>
+</dd>
+<dt>GRAVITY<span class="classifier">int</span></dt><dd><p>Aceleração da gravidade no jogo. Valor numérico: 5.</p>
+</dd>
+<dt>MAP<span class="classifier">list</span></dt><dd><p>Matriz que representa a estrutura do mapa. Cada número na matriz representa um tipo de tile.
+Valores possíveis: BLOCK, PLATF, LAVA, WATER, EMPTY.</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Example:<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Acesso às constantes:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">BLOCK</span><span class="p">)</span>   <span class="c1"># Saída: 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">PLATF</span><span class="p">)</span>   <span class="c1"># Saída: 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">LAVA</span><span class="p">)</span>    <span class="c1"># Saída: 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">WATER</span><span class="p">)</span>   <span class="c1"># Saída: 3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">EMPTY</span><span class="p">)</span>   <span class="c1"># Saída: -1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">GRAVITY</span><span class="p">)</span> <span class="c1"># Saída: 5</span>
+</pre></div>
+</div>
+<p>Acesso à matriz do mapa:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Map</span><span class="o">.</span><span class="n">MAP</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.BLOCK">
+<span class="sig-name descname"><span class="pre">BLOCK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#app.config.Map.BLOCK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.EMPTY">
+<span class="sig-name descname"><span class="pre">EMPTY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#app.config.Map.EMPTY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.GRAVITY">
+<span class="sig-name descname"><span class="pre">GRAVITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#app.config.Map.GRAVITY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.LAVA">
+<span class="sig-name descname"><span class="pre">LAVA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#app.config.Map.LAVA" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.MAP">
+<span class="sig-name descname"><span class="pre">MAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">2,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">2,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0],</span> <span class="pre">[-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">2,</span> <span class="pre">2,</span> <span class="pre">0,</span> <span class="pre">3,</span> <span class="pre">3,</span> <span class="pre">0,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">-1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0]]</span></em><a class="headerlink" href="#app.config.Map.MAP" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.PLATF">
+<span class="sig-name descname"><span class="pre">PLATF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#app.config.Map.PLATF" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.Map.WATER">
+<span class="sig-name descname"><span class="pre">WATER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#app.config.Map.WATER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.ModeScreenSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">ModeScreenSettings</span></span><a class="headerlink" href="#app.config.ModeScreenSettings" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por armazenar as configurações da tela de modo de jogo.</p>
+<section id="id9">
+<h3>Constants:<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>BACKGROUND_IMG<span class="classifier">str</span></dt><dd><p>Chave do dicionário de assets que representa a imagem de fundo do modo de jogo.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>Example:<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<dl>
+<dt>Acesso à constante:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ModeScreenSettings</span><span class="o">.</span><span class="n">BACKGROUND_IMG</span><span class="p">)</span>   <span class="c1"># Saída: &#39;mode_img&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.ModeScreenSettings.BACKGROUND_IMG">
+<span class="sig-name descname"><span class="pre">BACKGROUND_IMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mode_img'</span></em><a class="headerlink" href="#app.config.ModeScreenSettings.BACKGROUND_IMG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.PlayerConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">PlayerConfig</span></span><a class="headerlink" href="#app.config.PlayerConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por armazenar as configurações do jogador.</p>
+<section id="id11">
+<h3>Constants:<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>SPEED_X<span class="classifier">int</span></dt><dd><p>Velocidade em que o boneco se move horizontalmente. Valor padrão: 5.</p>
+</dd>
+<dt>PLAYER_WIDTH<span class="classifier">int</span></dt><dd><p>Largura do boneco. Valor padrão: igual a TILE_SIZE da classe TilesConfig.</p>
+</dd>
+<dt>PLAYER_HEIGHT<span class="classifier">int</span></dt><dd><p>Altura do boneco. Valor padrão: 1.5 vezes TILE_SIZE da classe TilesConfig.</p>
+</dd>
+<dt>JUMP_SIZE<span class="classifier">int</span></dt><dd><p>Define a velocidade inicial no pulo. Valor padrão: TILE_SIZE da classe TilesConfig.</p>
+</dd>
+<dt>WATERGIRL_IMG<span class="classifier">str</span></dt><dd><p>Chave do dicionário de assets que representa a imagem da personagem Watergirl.</p>
+</dd>
+<dt>FIREBOY_IMG<span class="classifier">str</span></dt><dd><p>Chave do dicionário de assets que representa a imagem da personagem Fireboy.</p>
+</dd>
+<dt>STILL<span class="classifier">str</span></dt><dd><p>Estado do jogador quando está parado.</p>
+</dd>
+<dt>JUMPING<span class="classifier">str</span></dt><dd><p>Estado do jogador durante o pulo.</p>
+</dd>
+<dt>FALLING<span class="classifier">str</span></dt><dd><p>Estado do jogador durante a queda.</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h3>Example:<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>Acesso às constantes (algumas saídas podem ser alteradas dependendo da config desejada):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">SPEED_X</span><span class="p">)</span>       <span class="c1"># Saída: 5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">PLAYER_WIDTH</span><span class="p">)</span>   <span class="c1"># Saída: 40</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">PLAYER_HEIGHT</span><span class="p">)</span>  <span class="c1"># Saída: 60</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">JUMP_SIZE</span><span class="p">)</span>      <span class="c1"># Saída: 40</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">WATERGIRL_IMG</span><span class="p">)</span>  <span class="c1"># Saída: &#39;watergirl_img&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">FIREBOY_IMG</span><span class="p">)</span>    <span class="c1"># Saída: &#39;fireboy_img&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">STILL</span><span class="p">)</span>           <span class="c1"># Saída: &#39;still&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">JUMPING</span><span class="p">)</span>         <span class="c1"># Saída: &#39;jumping&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">PlayerConfig</span><span class="o">.</span><span class="n">FALLING</span><span class="p">)</span>         <span class="c1"># Saída: &#39;falling&#39;</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.FALLING">
+<span class="sig-name descname"><span class="pre">FALLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'falling'</span></em><a class="headerlink" href="#app.config.PlayerConfig.FALLING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.FIREBOY_IMG">
+<span class="sig-name descname"><span class="pre">FIREBOY_IMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fireboy_img'</span></em><a class="headerlink" href="#app.config.PlayerConfig.FIREBOY_IMG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.JUMPING">
+<span class="sig-name descname"><span class="pre">JUMPING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'jumping'</span></em><a class="headerlink" href="#app.config.PlayerConfig.JUMPING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.JUMP_SIZE">
+<span class="sig-name descname"><span class="pre">JUMP_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#app.config.PlayerConfig.JUMP_SIZE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.PLAYER_HEIGHT">
+<span class="sig-name descname"><span class="pre">PLAYER_HEIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60</span></em><a class="headerlink" href="#app.config.PlayerConfig.PLAYER_HEIGHT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.PLAYER_WIDTH">
+<span class="sig-name descname"><span class="pre">PLAYER_WIDTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#app.config.PlayerConfig.PLAYER_WIDTH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.SPEED_X">
+<span class="sig-name descname"><span class="pre">SPEED_X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#app.config.PlayerConfig.SPEED_X" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.STILL">
+<span class="sig-name descname"><span class="pre">STILL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'still'</span></em><a class="headerlink" href="#app.config.PlayerConfig.STILL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.PlayerConfig.WATERGIRL_IMG">
+<span class="sig-name descname"><span class="pre">WATERGIRL_IMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'watergirl_img'</span></em><a class="headerlink" href="#app.config.PlayerConfig.WATERGIRL_IMG" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.ScreenSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">ScreenSettings</span></span><a class="headerlink" href="#app.config.ScreenSettings" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que armazena as configurações da tela do pygame.</p>
+<section id="id13">
+<h3>Constants:<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>TITULO<span class="classifier">str</span></dt><dd><p>Título que aparece na parte superior da tela.</p>
+</dd>
+<dt>WIDTH<span class="classifier">int</span></dt><dd><p>Largura da tela em pixels.</p>
+</dd>
+<dt>HEIGHT<span class="classifier">int</span></dt><dd><p>Altura da tela em pixels.</p>
+</dd>
+<dt>FPS<span class="classifier">int</span></dt><dd><p>Número de frames por segundo.</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h3>Example:<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>Acesso às constantes (saída pode ser alterada dependendo da config desejada):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ScreenSettings</span><span class="o">.</span><span class="n">TITULO</span><span class="p">)</span>   <span class="c1"># Saída: &#39;Caillou&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ScreenSettings</span><span class="o">.</span><span class="n">WIDTH</span><span class="p">)</span>    <span class="c1"># Saída: 480</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ScreenSettings</span><span class="o">.</span><span class="n">HEIGHT</span><span class="p">)</span>   <span class="c1"># Saída: 600</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ScreenSettings</span><span class="o">.</span><span class="n">FPS</span><span class="p">)</span>      <span class="c1"># Saída: 60</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.ScreenSettings.FPS">
+<span class="sig-name descname"><span class="pre">FPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">60</span></em><a class="headerlink" href="#app.config.ScreenSettings.FPS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.ScreenSettings.HEIGHT">
+<span class="sig-name descname"><span class="pre">HEIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">800</span></em><a class="headerlink" href="#app.config.ScreenSettings.HEIGHT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.ScreenSettings.TITULO">
+<span class="sig-name descname"><span class="pre">TITULO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Caillou'</span></em><a class="headerlink" href="#app.config.ScreenSettings.TITULO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.ScreenSettings.WIDTH">
+<span class="sig-name descname"><span class="pre">WIDTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">800</span></em><a class="headerlink" href="#app.config.ScreenSettings.WIDTH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.config.TilesConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.config.</span></span><span class="sig-name descname"><span class="pre">TilesConfig</span></span><a class="headerlink" href="#app.config.TilesConfig" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por armazenar as configurações dos blocos no mapa.</p>
+<section id="contants">
+<h3>Contants:<a class="headerlink" href="#contants" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>TILE_SIZE<span class="classifier">int</span></dt><dd><p>Define o tamanho de um bloco no mapa.</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Example:<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>Acesso a constante (saída pode ser alterada dependendo da config desejada):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">TilesConfig</span><span class="o">.</span><span class="n">TILE_SIZE</span><span class="p">)</span>   <span class="c1"># Saída: 40</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="app.config.TilesConfig.TILE_SIZE">
+<span class="sig-name descname"><span class="pre">TILE_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#app.config.TilesConfig.TILE_SIZE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-app.game">
+<span id="app-game-module"></span><h2>app.game module<a class="headerlink" href="#module-app.game" title="Link to this heading"></a></h2>
+<p>Responsável pelas telas estaticas e de gameplay do jogo. Contém a classe pai chamada Screen
+de todas as outras telas possíveis que formam o jogo.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.game.EndScreen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.game.</span></span><span class="sig-name descname"><span class="pre">EndScreen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.game.EndScreen" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.game.Screen" title="app.game.Screen"><code class="xref py py-class docutils literal notranslate"><span class="pre">Screen</span></code></a></p>
+<p>Representa a tela de fim de jogo.</p>
+<p>Nesta tela, é exibido o resultado final do jogo (vitória ou derrota).</p>
+<section id="atributos">
+<h3>Atributos:<a class="headerlink" href="#atributos" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>screen<span class="classifier">pygame.Surface</span></dt><dd><p>A superfície onde a tela de fim de jogo será renderizada.</p>
+</dd>
+<dt>_result<span class="classifier">str</span></dt><dd><p>O resultado do jogo (‘win’ para vitória ou ‘lost’ para derrota).</p>
+</dd>
+</dl>
+</section>
+<section id="metodos">
+<h3>Métodos:<a class="headerlink" href="#metodos" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>set_screen()</dt><dd><p>Configura a tela de fim de jogo, inicializando o Pygame, configurando a tela e interrompendo a música de fundo.</p>
+</dd>
+<dt>run()</dt><dd><p>Inicia o loop principal da tela de fim de jogo, atualizando os eventos e a tela da tela de fim de jogo.</p>
+</dd>
+<dt>__initialize()</dt><dd><p>Inicializa o Pygame e configurações iniciais da tela de fim de jogo.</p>
+</dd>
+<dt>__play_music()</dt><dd><p>Interrompe a reprodução da música de fundo na tela de fim de jogo.</p>
+</dd>
+<dt>__background()</dt><dd><p>Define o fundo da tela de fim de jogo com base no resultado (vitória ou derrota).</p>
+</dd>
+<dt>__update_screen()</dt><dd><p>Atualiza a tela da tela de fim de jogo, desenhando o fundo na tela.</p>
+</dd>
+<dt>set_result(result: str)</dt><dd><p>Define o resultado do jogo.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.EndScreen.phase_to_go">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">phase_to_go</span></span><a class="headerlink" href="#app.game.EndScreen.phase_to_go" title="Link to this definition"></a></dt>
+<dd><p>Retorna a fase para a qual o jogo deve ir após a tela de fim de jogo.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: Número da fase seguinte.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.EndScreen.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.EndScreen.run" title="Link to this definition"></a></dt>
+<dd><p>Inicia o loop principal da tela de fim de jogo.</p>
+<p>Este método atualiza os eventos e a tela da tela de fim de jogo.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.EndScreen.running">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running</span></span><a class="headerlink" href="#app.game.EndScreen.running" title="Link to this definition"></a></dt>
+<dd><p>Propriedade que indica se o jogo está em execução.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o jogo está em execução, False caso contrário.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.EndScreen.running_phase">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running_phase</span></span><a class="headerlink" href="#app.game.EndScreen.running_phase" title="Link to this definition"></a></dt>
+<dd><p>Propriedade que indica se a fase do jogo está em execução.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a fase está em execução, False caso contrário.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.EndScreen.set_screen">
+<span class="sig-name descname"><span class="pre">set_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.EndScreen.set_screen" title="Link to this definition"></a></dt>
+<dd><p>Configura a tela de fim de jogo.</p>
+<p>Esta função inicializa o Pygame, configura a tela e interrompe a música de fundo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.EndScreen.setresult">
+<span class="sig-name descname"><span class="pre">setresult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.game.EndScreen.setresult" title="Link to this definition"></a></dt>
+<dd><p>Define o resultado do jogo.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>result (str): Resultado do jogo (‘win’ para vitória ou ‘lost’ para derrota).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.game.Game">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.game.</span></span><span class="sig-name descname"><span class="pre">Game</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.game.Game" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.game.Screen" title="app.game.Screen"><code class="xref py py-class docutils literal notranslate"><span class="pre">Screen</span></code></a></p>
+<p>Representa a tela principal do jogo.</p>
+<p>Esta classe controla a lógica e a execução do jogo.</p>
+<dl>
+<dt>Attributes:</dt><dd><p>screen (pygame.Surface): A superfície onde o jogo será renderizado.
+_countwaterwin (int): Contador de vitórias da água.
+_countfirewin (int): Contador de vitórias do fogo.</p>
+</dd>
+<dt>Methods:</dt><dd><dl>
+<dt>__init__(self, screen):</dt><dd><p>Inicializa a tela do jogo.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>screen (pygame.Surface): A superfície onde o jogo será renderizado.</p>
+</dd>
+</dl>
+</dd>
+<dt>set_screen(self):</dt><dd><p>Configura a tela do jogo.
+Esta função inicializa o Pygame, configura a tela, carrega assets e cria os sprites.</p>
+</dd>
+<dt>__initialize(self):</dt><dd><p>Inicializa o Pygame e configurações iniciais do jogo.</p>
+</dd>
+<dt>__create_sprites(self):</dt><dd><p>Cria os sprites do jogo.
+Esta função cria os jogadores, cria os tiles do mapa e os adiciona aos grupos de sprites.</p>
+</dd>
+<dt>__play_music(self):</dt><dd><p>Toca a música de fundo do jogo.</p>
+</dd>
+<dt>running(self):</dt><dd><p>Propriedade que indica se o jogo está em execução.
+Returns:</p>
+<blockquote>
+<div><p>bool: True se o jogo está em execução, False caso contrário.</p>
+</div></blockquote>
+</dd>
+<dt>running_phase(self):</dt><dd><p>Propriedade que indica se a fase do jogo está em execução.
+Returns:</p>
+<blockquote>
+<div><p>bool: True se a fase está em execução, False caso contrário.</p>
+</div></blockquote>
+</dd>
+<dt>phase_to_go(self):</dt><dd><p>Propriedade que retorna a próxima fase do jogo.
+Returns:</p>
+<blockquote>
+<div><p>int: O número da próxima fase.</p>
+</div></blockquote>
+</dd>
+<dt>run(self):</dt><dd><p>Inicia o loop principal do jogo.
+Este método atualiza os eventos, a tela do jogo, verifica as condições de fim de jogo e de vitória.</p>
+</dd>
+<dt>__update_events(self):</dt><dd><p>Atualiza os eventos do jogo.
+Este método processa eventos como teclas pressionadas, cliques do mouse, etc.</p>
+</dd>
+<dt>result(self):</dt><dd><p>Retorna o resultado do jogo.
+Returns:</p>
+<blockquote>
+<div><p>str: O resultado do jogo (ganhou ou perdeu).</p>
+</div></blockquote>
+</dd>
+<dt>__gameover(self):</dt><dd><p>Verifica se o jogo chegou ao fim (game over).</p>
+</dd>
+<dt>__win(self):</dt><dd><p>Verifica se houve vitória no jogo.</p>
+</dd>
+<dt>__update_screen(self):</dt><dd><p>Atualiza a tela do jogo.
+Este método desenha todos os sprites na tela, atualiza a tela e realiza a troca de buffers.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.Game.phase_to_go">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">phase_to_go</span></span><a class="headerlink" href="#app.game.Game.phase_to_go" title="Link to this definition"></a></dt>
+<dd><p>Propriedade que retorna a próxima fase do jogo.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: O número da próxima fase.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.Game.result">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">result</span></span><a class="headerlink" href="#app.game.Game.result" title="Link to this definition"></a></dt>
+<dd><p>Retorna o resultado do jogo.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>str: O resultado do jogo (ganhou ou perdeu).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.Game.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.Game.run" title="Link to this definition"></a></dt>
+<dd><p>Inicia o loop principal do jogo.</p>
+<p>Este método atualiza os eventos, a tela do jogo, verifica as condições de fim de jogo e de vitória.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.Game.running">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running</span></span><a class="headerlink" href="#app.game.Game.running" title="Link to this definition"></a></dt>
+<dd><p>Propriedade que indica se o jogo está em execução.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se o jogo está em execução, False caso contrário.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.Game.running_phase">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running_phase</span></span><a class="headerlink" href="#app.game.Game.running_phase" title="Link to this definition"></a></dt>
+<dd><p>Propriedade que indica se a fase do jogo está em execução.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True se a fase está em execução, False caso contrário.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.Game.set_screen">
+<span class="sig-name descname"><span class="pre">set_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.Game.set_screen" title="Link to this definition"></a></dt>
+<dd><p>Configura a tela do jogo.</p>
+<p>Esta função inicializa o Pygame, configura a tela, carrega assets e cria os sprites.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.game.InitialScreen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.game.</span></span><span class="sig-name descname"><span class="pre">InitialScreen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen:</span> <span class="pre">&lt;module</span> <span class="pre">'pygame.display'</span> <span class="pre">from</span> <span class="pre">'C:\\Users\\Acer\\jogoLP\\venv\\Lib\\site-packages\\pygame\\display.cp311-win_amd64.pyd'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.game.InitialScreen" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#app.game.Screen" title="app.game.Screen"><code class="xref py py-class docutils literal notranslate"><span class="pre">Screen</span></code></a></p>
+<p>Representa a tela inicial do jogo.</p>
+<p>Esta tela exibe uma imagem de fundo e reproduz uma música de introdução. O jogador pode pressionar a tecla
+‘Enter’ para avançar para a próxima fase ou sair do jogo.</p>
+<dl>
+<dt>Attributes:</dt><dd><p>screen (pygame.Surface): A superfície onde a tela será renderizada.</p>
+</dd>
+<dt>Methods:</dt><dd><dl>
+<dt>set_screen(self):</dt><dd><p>Configura a tela inicial.
+Esta função inicializa o Pygame, configura a tela, e inicia a música de fundo.</p>
+</dd>
+<dt>__initialize(self):</dt><dd><p>Inicializa o Pygame e configurações iniciais da tela inicial.</p>
+</dd>
+<dt>__play_music(self):</dt><dd><p>Toca a música de introdução.</p>
+</dd>
+<dt>running(self):</dt><dd><p>Propriedade que indica se a tela está em execução.
+Returns:</p>
+<blockquote>
+<div><p>bool: True se a tela está em execução, False caso contrário.</p>
+</div></blockquote>
+</dd>
+<dt>running_phase(self):</dt><dd><p>Propriedade que indica se a fase da tela está em execução.
+Returns:</p>
+<blockquote>
+<div><p>bool: True se a fase está em execução, False caso contrário.</p>
+</div></blockquote>
+</dd>
+<dt>run(self):</dt><dd><p>Inicia o loop principal da tela inicial.
+Este método atualiza os eventos e a tela da tela inicial.</p>
+</dd>
+<dt>__update_events(self):</dt><dd><p>Atualiza os eventos da tela inicial.
+Este método processa eventos como teclas pressionadas para avançar ou sair do jogo.</p>
+</dd>
+<dt>__background(self):</dt><dd><p>Define o fundo da tela inicial com uma imagem.</p>
+</dd>
+<dt>__update_screen(self):</dt><dd><p>Atualiza a tela inicial.
+Este método desenha o fundo na tela inicial.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.InitialScreen.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.InitialScreen.run" title="Link to this definition"></a></dt>
+<dd><p>Método abstrato para executar a funcionalidade da tela.
+Este método deve ser implementado por subclasses concretas.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.InitialScreen.running">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running</span></span><a class="headerlink" href="#app.game.InitialScreen.running" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="app.game.InitialScreen.running_phase">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">running_phase</span></span><a class="headerlink" href="#app.game.InitialScreen.running_phase" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.InitialScreen.set_screen">
+<span class="sig-name descname"><span class="pre">set_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.InitialScreen.set_screen" title="Link to this definition"></a></dt>
+<dd><p>Método abstrato para definir o conteúdo da tela.
+Este método deve ser implementado por subclasses concretas.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="app.game.Screen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.game.</span></span><span class="sig-name descname"><span class="pre">Screen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen:</span> <span class="pre">&lt;module</span> <span class="pre">'pygame.display'</span> <span class="pre">from</span> <span class="pre">'C:\\Users\\Acer\\jogoLP\\venv\\Lib\\site-packages\\pygame\\display.cp311-win_amd64.pyd'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.game.Screen" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Classe abstrata que representa uma tela de jogo ou uma tela estática.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>screen (pygame.display): A interface pygame para renderizar a tela.</p>
+</dd>
+<dt>Methods:</dt><dd><dl class="simple">
+<dt>__init__(self, screen: pygame.display):</dt><dd><p>Construtor para inicializar o objeto que herda de Screen.</p>
+</dd>
+<dt>set_screen(self):</dt><dd><p>Método abstrato para definir o conteúdo da tela.</p>
+</dd>
+<dt>run(self):</dt><dd><p>Método abstrato para executar a funcionalidade da tela.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.Screen.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.Screen.run" title="Link to this definition"></a></dt>
+<dd><p>Método abstrato para executar a funcionalidade da tela.
+Este método deve ser implementado por subclasses concretas.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.game.Screen.set_screen">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_screen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.game.Screen.set_screen" title="Link to this definition"></a></dt>
+<dd><p>Método abstrato para definir o conteúdo da tela.
+Este método deve ser implementado por subclasses concretas.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-app.player">
+<span id="app-player-module"></span><h2>app.player module<a class="headerlink" href="#module-app.player" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.player.Player">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.player.</span></span><span class="sig-name descname"><span class="pre">Player</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_img</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">platforms</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lava</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">water</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Sprite</span></code></p>
+<p>Classe que representa o jogador no jogo.</p>
+<section id="atributes">
+<h3>Atributes:<a class="headerlink" href="#atributes" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>player_img<span class="classifier">pygame.Surface</span></dt><dd><p>Imagem representando o jogador.</p>
+</dd>
+<dt>row<span class="classifier">int</span></dt><dd><p>Linha inicial do jogador no mapa.</p>
+</dd>
+<dt>column<span class="classifier">int</span></dt><dd><p>Coluna inicial do jogador no mapa.</p>
+</dd>
+<dt>platforms<span class="classifier">pygame.sprite.Group</span></dt><dd><p>Grupo de plataformas no jogo.</p>
+</dd>
+<dt>blocks<span class="classifier">pygame.sprite.Group</span></dt><dd><p>Grupo de blocos no jogo.</p>
+</dd>
+<dt>lava<span class="classifier">pygame.sprite.Group</span></dt><dd><p>Grupo de lava no jogo.</p>
+</dd>
+<dt>water<span class="classifier">pygame.sprite.Group</span></dt><dd><p>Grupo de água no jogo.</p>
+</dd>
+<dt>element<span class="classifier">str</span></dt><dd><p>Tipo do jogador, ‘water’ ou ‘fire’.</p>
+</dd>
+<dt>state<span class="classifier">str</span></dt><dd><p>Estado atual do jogador, inicializado como ‘still’.</p>
+</dd>
+<dt>rect<span class="classifier">pygame.Rect</span></dt><dd><p>Retângulo que representa a posição e tamanho do jogador.</p>
+</dd>
+<dt>speedx<span class="classifier">int</span></dt><dd><p>Velocidade horizontal do jogador.</p>
+</dd>
+<dt>speedy<span class="classifier">int</span></dt><dd><p>Velocidade vertical do jogador.</p>
+</dd>
+<dt>highest_y<span class="classifier">int</span></dt><dd><p>Altura máxima alcançada pelo jogador antes de começar a cair.</p>
+</dd>
+<dt>life<span class="classifier">bool</span></dt><dd><p>Indica se o jogador está vivo.</p>
+</dd>
+<dt>health<span class="classifier">int</span></dt><dd><p>Vida do jogador.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="app.player.Player.element">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#app.player.Player.element" title="Link to this definition"></a></dt>
+<dd><p>Getter do atributo que representa o elemento do personagem.
+Retorna o tipo de elemento (‘water’ ou ‘fire’).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.player.Player.jump">
+<span class="sig-name descname"><span class="pre">jump</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player.jump" title="Link to this definition"></a></dt>
+<dd><p>Pula se não estiver pulando ou caindo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.player.Player.stop_walk_left">
+<span class="sig-name descname"><span class="pre">stop_walk_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player.stop_walk_left" title="Link to this definition"></a></dt>
+<dd><p>Faz o boneco parar de andar caso estivesse andando para esquerda.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.player.Player.stop_walk_right">
+<span class="sig-name descname"><span class="pre">stop_walk_right</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player.stop_walk_right" title="Link to this definition"></a></dt>
+<dd><p>Faz o boneco parar de andar caso estivesse andando para direita.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.player.Player.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player.update" title="Link to this definition"></a></dt>
+<dd><p>Atualiza movimento, colisões e estado. Método usado por sprites
+do pygame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.player.Player.walk_to_left">
+<span class="sig-name descname"><span class="pre">walk_to_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player.walk_to_left" title="Link to this definition"></a></dt>
+<dd><p>Move para a esquerda o personagem utilizando a posicao do rect dele
+e a configuração de speed pre definida. A speedx diz o quanto o
+personagem move horizontalmente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="app.player.Player.walk_to_right">
+<span class="sig-name descname"><span class="pre">walk_to_right</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.player.Player.walk_to_right" title="Link to this definition"></a></dt>
+<dd><p>Move para a direita o personagem utilizando a posicao do rect dele
+e a configuração de speed pré definida. A speedx diz o quanto o
+personagem move horizontalmente.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-app.tiles">
+<span id="app-tiles-module"></span><h2>app.tiles module<a class="headerlink" href="#module-app.tiles" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="app.tiles.Tiles">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">app.tiles.</span></span><span class="sig-name descname"><span class="pre">Tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tile_img</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Surface</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.tiles.Tiles" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Sprite</span></code></p>
+<p>Classe que representa os blocos do cenário.</p>
+<section id="id16">
+<h3>Atributes:<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>image<span class="classifier">pygame.Surface</span></dt><dd><p>Imagem que representa o tile.</p>
+</dd>
+<dt>rect<span class="classifier">pygame.Rect</span></dt><dd><p>Retângulo de colisão do tile no cenário.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="app.tiles.Tiles.check_collision">
+<span class="sig-name descname"><span class="pre">check_collision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_sprite</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.tiles.Tiles.check_collision" title="Link to this definition"></a></dt>
+<dd><p>Verifica se este tile colidiu com outro sprite.</p>
+<p>Parameters:
+- other_sprite (pygame.sprite.Sprite): O sprite a ser verificado quanto à colisão.</p>
+<p>Returns:
+- bool: Retorna True se houver colisão, False se não houver colisão.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+<section id="module-app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Gabriel, Antonio, Tomas, Henrique.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

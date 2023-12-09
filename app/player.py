@@ -1,6 +1,7 @@
 import pygame
 from .config import Map, ScreenSettings, PlayerConfig,TilesConfig
 
+
 class Player(pygame.sprite.Sprite):
     """
     Classe que representa o jogador no jogo.

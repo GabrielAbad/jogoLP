@@ -1,3 +1,9 @@
+"""
+Responsável pelas telas estaticas e de gameplay do jogo. Contém a classe pai chamada Screen
+de todas as outras telas possíveis que formam o jogo.
+"""
+
+
 from abc import abstractmethod, ABC
 import pygame
 from .assets import load_assets, img_dir
@@ -6,6 +12,7 @@ from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig, Initi
 from .tiles import Tiles
 from os import path
 from math import dist
+
 
 class Screen(ABC):
     """
@@ -487,107 +494,6 @@ class InitialScreen(Screen):
         pygame.display.flip()
 
 
-class ModeScreen(Screen):
-    """
-    Representa a tela de seleção de modo do jogo.
-
-    Nesta tela, o jogador pode escolher entre diferentes modos de jogo.
-    """
-
-    def set_screen(self):
-        """
-        Configura a tela do modo de jogo.
-
-        Esta função inicializa o Pygame, configura a tela e inicia a música de fundo.
-        """
-        self.__initialize()
-        self.__play_music()
-
-    def __initialize(self):
-        """
-        Inicializa o Pygame e configurações iniciais do modo de jogo.
-        """
-        pygame.init()
-        pygame.mixer.init()
-        pygame.display.set_caption(ScreenSettings.TITULO)
-
-    def __play_music(self):
-        """
-        Toca a música de fundo do modo de jogo.
-        """
-        self.music_path = path.join(path.dirname(__file__), '..','msc','caillou_theme_song.mp3')
-        pygame.mixer.music.load(self.music_path)
-        pygame.mixer.music.set_volume(0.5)
-        pygame.mixer.music.play(loops=-1)
-    
-    @property
-    def running(self):
-        """
-        Propriedade que indica se o jogo está em execução.
-
-        Returns:
-            bool: True se o jogo está em execução, False caso contrário.
-        """
-        return self._running
-    
-    @property
-    def running_phase(self):
-        """
-        Propriedade que indica se a fase do jogo está em execução.
-
-        Returns:
-            bool: True se a fase está em execução, False caso contrário.
-        """
-        return self._running_phase
-    
-    def run(self):
-        """
-        Inicia o loop principal do modo de jogo.
-
-        Este método atualiza os eventos e a tela do modo de jogo.
-        """
-        self._running = True
-        self._running_phase = True
-        while self.running and self.running_phase:
-            self.__update_events()
-            self.__update_screen()
-    
-
-    def __update_events(self):
-        """
-        Atualiza os eventos do modo de jogo.
-
-        Este método processa eventos como teclas pressionadas para selecionar o modo de jogo.
-        """
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self._running = False
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
-                    self._running_phase = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_2:
-                    self._running_phase = False
-    
-    def __background(self):
-        """
-        Define o background da tela do modo de jogo.
-        """
-        # Carrega assets
-        self.assets = load_assets(img_dir)
-        self.background = self.assets[ModeScreenSettings.BACKGROUND_IMG]
-        self.screen.blit(self.background, (0,0))
-    
-    def __update_screen(self):
-        """
-        Atualiza a tela do modo de jogo.
-
-        Este método desenha o background na tela do modo de jogo.
-        """
-        self.__background()
-        pygame.display.flip()
-
 class EndScreen(Screen):
     """
     Representa a tela de fim de jogo.
@@ -616,22 +522,19 @@ class EndScreen(Screen):
         Interrompe a reprodução da música de fundo na tela de fim de jogo.
 
     __background()
-        Define o background da tela de fim de jogo baseado no resultado (vitória ou derrota).
+        Define o fundo da tela de fim de jogo com base no resultado (vitória ou derrota).
 
     __update_screen()
-        Atualiza a tela da tela de fim de jogo, desenhando o background na tela.
+        Atualiza a tela da tela de fim de jogo, desenhando o fundo na tela.
 
     set_result(result: str)
         Define o resultado do jogo.
-
-    @property
-    phase_to_go() -> int
-        Retorna a fase para a qual o jogo deve ir após a tela de fim de jogo.
     """
+
     
     def __init__(self, screen):
         """
-        Inicializa a tela de fim de jogo.
+        Inicializa a tela de fim de jogo, vitoria ou game over.
 
         Args:
             screen (pygame.Surface): A superfície onde a tela de fim de jogo será renderizada.

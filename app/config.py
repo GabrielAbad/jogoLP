@@ -126,6 +126,7 @@ class EndScreenSettings:
     WIN_IMG ='win_img' 
     GAMEOVER_IMG = 'gameover_img' 
 
+
 class ModeScreenSettings:
     """
     Classe responsável por armazenar as configurações da tela de modo de jogo.
@@ -143,6 +144,7 @@ class ModeScreenSettings:
     BACKGROUND_IMG = 'mode_img'
 
     # Chaves do dicionario de assets
+
 
 class Map:
     """

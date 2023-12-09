@@ -2,6 +2,7 @@
 Módulo responsável pelo gerenciamento dos recursos visuais do jogo.
 '''
 
+
 import pygame
 from os import path
 from .config import Map, PlayerConfig, InitialScreenSettings, EndScreenSettings, ModeScreenSettings
@@ -9,6 +10,7 @@ from .config import Map, PlayerConfig, InitialScreenSettings, EndScreenSettings,
     
 # Define o diretório que contém as imagens.
 img_dir = path.join('..', 'img')
+
 
 def load_assets(img_dir: str) -> dict:
     '''
