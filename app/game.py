@@ -5,7 +5,7 @@ from .player import Player
 from .config import Map, Colors, ScreenSettings, PlayerConfig, DoorConfig, InitialScreenSettings, EndScreenSettings,ModeScreenSettings
 from .tiles import Tiles
 from os import path
-
+from math import dist
 
 class Screen(ABC):
     """
@@ -276,11 +276,21 @@ class Game(Screen):
         """
         Verifica se houve vitória no jogo.
         """
-        if self.watergirl.rect.left == self.waterdoor.left and self.watergirl.highest_y == self.waterdoor.bottom:
+        coord_watergirl = (self.watergirl.rect.x,self.watergirl.rect.y)
+        coord_waterdoor = (self.waterdoor.x,self.waterdoor.y)
+        coord_fireboy = (self.fireboy.rect.x,self.fireboy.rect.y)
+        coord_firedoor = (self.firedoor.x, self.firedoor.y)
+
+
+
+
+
+        if dist(coord_watergirl,coord_waterdoor)<5:
             self._countwaterwin += 1
-        if self.fireboy.rect.left == self.firedoor.left and self.fireboy.highest_y == self.firedoor.bottom:
+        if dist(coord_fireboy, coord_firedoor) < 5:
+            self._countfireboxwin += 1
             self._countfirewin += 1
-        if self._countwaterwin and self._countfirewin >= 1:
+        if self._countwaterwin or self._countfirewin >= 1:
             self._phase_to_go = 2
             self._running_phase = False
             self._result = 'win'
