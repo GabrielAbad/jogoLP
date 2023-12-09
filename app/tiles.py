@@ -35,3 +35,15 @@ class Tiles(pygame.sprite.Sprite):
         # Posiciona o tile.
         self.rect.x = TilesConfig.TILE_SIZE * column
         self.rect.y = TilesConfig.TILE_SIZE * row
+
+    def check_collision(self, other_sprite):
+        """
+        Verifica se este tile colidiu com outro sprite.
+
+        Parameters:
+        - other_sprite (pygame.sprite.Sprite): O sprite a ser verificado quanto à colisão.
+
+        Returns:
+        - bool: Retorna True se houver colisão, False se não houver colisão.
+        """
+        return self.rect.colliderect(other_sprite.rect)
