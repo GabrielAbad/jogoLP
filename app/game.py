@@ -361,7 +361,7 @@ class Game(Screen):
             self._countwaterwin += 1
         if dist(coord_fireboy, coord_firedoor) < 5:
             self._countfirewin += 1
-        if self._countwaterwin and self._countfirewin >= 1:
+        if self._countwaterwin or self._countfirewin >= 1:
             self._phase_to_go = 2
             self._running_phase = False
             self._result = 'win'
