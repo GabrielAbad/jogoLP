@@ -173,8 +173,8 @@ class Game(Screen):
         self.water = pygame.sprite.Group()
 
         # Portas da vitória
-        self.firedoor = pygame.Rect(80,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
-        self.waterdoor = pygame.Rect(120,60 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+        self.firedoor = pygame.Rect(0,0 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+        self.waterdoor = pygame.Rect(40,0 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
 
     def __create_sprites(self):
         """
@@ -361,7 +361,7 @@ class Game(Screen):
             self._countwaterwin += 1
         if dist(coord_fireboy, coord_firedoor) < 5:
             self._countfirewin += 1
-        if self._countwaterwin or self._countfirewin >= 1:
+        if self._countwaterwin and self._countfirewin >= 1:
             self._phase_to_go = 2
             self._running_phase = False
             self._result = 'win'
