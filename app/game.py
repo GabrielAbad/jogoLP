@@ -101,8 +101,8 @@ class Game(Screen):
         self.water = pygame.sprite.Group()
 
         # Portas da vitória
-        self.firedoor = pygame.Rect(0,0 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
-        self.waterdoor = pygame.Rect(40,0 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+        self.firedoor = pygame.Rect(0,20 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
+        self.waterdoor = pygame.Rect(40,20 , DoorConfig.DOOR_WIDTH, DoorConfig.DOOR_HEIGHT)
 
     def __create_sprites(self):
         """
