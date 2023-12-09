@@ -8,12 +8,12 @@ No modo dual-player, duas pessoas no mesmo computador podem jogar simultaneament
 
 Quem chegar primeiro na porta vence!
 
-## Controles
+# Controles
 
-# Personagem
+## Personagem
 Use W-A-S-D para mover um personagem, e as setas para mover o outro.
 
-# Som
+## Som
 
 A tecla K aumenta o volume, tecla L diminui.
 
