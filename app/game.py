@@ -183,8 +183,8 @@ class Game(Screen):
         Esta função cria os jogadores, cria os tiles do mapa e os adiciona aos grupos de sprites.
         """
         
-        self.fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 13, 0, self.platforms, self.blocks,self.lava,self.water,'fire')
-        self.watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 13, 1, self.platforms, self.blocks,self.lava,self.water ,'water')
+        self.fireboy = Player(self.assets[PlayerConfig.FIREBOY_IMG], 20, 0, self.platforms, self.blocks,self.lava,self.water,'fire')
+        self.watergirl = Player(self.assets[PlayerConfig.WATERGIRL_IMG], 20, 1, self.platforms, self.blocks,self.lava,self.water ,'water')
         self.players =[self.watergirl,self.fireboy]
 
         # Cria tiles de acordo com o mapa
