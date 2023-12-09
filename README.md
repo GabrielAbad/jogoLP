@@ -4,11 +4,9 @@ Bem-vindo ao repositório do jogo FireWater! Este é um projeto desenvolvido com
 
 ## Descrição do Jogo
 
-O jogo FireWater é uma aventura interativa em que se pode escolher entre o modo single player e dual player.
-
-No modo single player, o jogador controla somente um personagem.
-
 No modo dual-player, duas pessoas no mesmo computador podem jogar simultaneamente.
+
+Quem chegar primeiro na porta vence!
 
 ## Controles
 
