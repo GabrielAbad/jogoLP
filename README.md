@@ -31,8 +31,8 @@ O objetivo é levar cada personagem à sua respectiva porta.
 
 2. **Clone o Repositório:**
    ```bash
-   git clone https://github.com/seu-usuario/caillou-game.git
-   cd caillou-game
+   git clone https://github.com/seu-usuario/jogoLP.git
+   cd jogoLP
 
 3. Execute o arquivo `main.py`, dentro da pasta do repositório clonado.
 
