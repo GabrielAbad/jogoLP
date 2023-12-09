@@ -25,11 +25,10 @@ try:
     screen = pygame.display.set_mode((ScreenSettings.WIDTH, ScreenSettings.HEIGHT))
 
     tela_inicial = InitialScreen(screen)
-    tela_modo = ModeScreen(screen)
     game = Game(screen)
     end = EndScreen(screen)
 
-    phases = [tela_inicial, game, end, tela_modo]
+    phases = [tela_inicial, game, end]
 
     phase = 0
     while phase < len(phases):
