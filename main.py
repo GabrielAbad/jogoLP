@@ -1,5 +1,5 @@
 from app.config import ScreenSettings
-from app.game import InitialScreen, Game, EndScreen, ModeScreen
+from app.game import InitialScreen, Game, EndScreen
 import pygame
 
 libraries = [

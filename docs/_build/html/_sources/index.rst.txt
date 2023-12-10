@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Pygame Fireboy Watergirl Documentation's documentation!
+Welcome to Pygame Fireboy Watergirl documentation!
 ==================================================================
 
 .. toctree::
