@@ -1,41 +1,33 @@
 # Jogo FireWater
 
-Bem-vindo ao repositório do jogo FireWater! Este é um projeto desenvolvido como parte da disciplina de Linguagem de Programação (LP). FireWater ,inspirado no jogo Fireboy & Watergirl, foi criado como uma aplicação prática dos conceitos aprendidos durante o curso.
+Bem-vindo ao repositório do jogo FireWater! Este é um projeto desenvolvido como parte da disciplina de Linguagem de Programação (LP). O FireWater, inspirado no jogo Fireboy & Watergirl, foi criado como uma aplicação prática dos conceitos aprendidos durante o curso.
 
 ## Descrição do Jogo
 
-No modo dual-player, duas pessoas no mesmo computador podem jogar simultaneamente.
+No modo dual-player, duas pessoas no mesmo computador podem jogar simultaneamente. O objetivo é chegar primeiro na porta para vencer!
 
-Quem chegar primeiro na porta vence!
+### Controles
 
-# Controles
+#### Personagem
+- Use W-A-S-D para mover um personagem.
+- Utilize as setas direcionais para mover o outro personagem.
 
-## Personagem
-Use W-A-S-D para mover um personagem, e as setas para mover o outro.
+#### Som
+- Tecla K: aumenta o volume.
+- Tecla L: diminui o volume.
 
-## Som
+### Jogabilidade
 
-A tecla K aumenta o volume, tecla L diminui.
+Cuidado, cair na lava com a Watergirl ou cair na água com o Fireboy leva ao fim do jogo. O objetivo é levar cada personagem à sua respectiva porta.
 
-# Jogabilidade
+## Instalação e Execução do Jogo
 
-Cuidado, cair na lava com watergirl ou cair na água fireboy leva ao fim do jogo.
+### Pré-requisitos
 
-O objetivo é levar cada personagem à sua respectiva porta.
+Certifique-se de ter o ambiente de desenvolvimento configurado conforme as instruções no arquivo `INSTALL.md`.
 
-## Instalação e execução do jogo
+### Clone o Repositório
 
-1. **Pré-requisitos:** Certifique-se de ter o ambiente de desenvolvimento configurado conforme as instruções no arquivo `INSTALL.md`.
-
-2. **Clone o Repositório:**
-   ```bash
-   git clone https://github.com/seu-usuario/jogoLP.git
-   cd jogoLP
-
-3. Execute o arquivo `main.py`, dentro da pasta do repositório clonado.
-
-## Documentação
-
-A documentação completa do código está hospedada no seguinte website:
-
-[Link](https://pygamefireboywatergirldoc.netlify.app)
+```bash
+git clone https://github.com/seu-usuario/jogoLP.git
+cd jogoLP

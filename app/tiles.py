@@ -44,6 +44,6 @@ class Tiles(pygame.sprite.Sprite):
         - other_sprite (pygame.sprite.Sprite): O sprite a ser verificado quanto à colisão.
 
         Returns:
-        - bool: Retorna True se houver colisão, False se não houver colisão.
+        - bool: True se houver colisão e False se não houver colisão.
         """
         return self.rect.colliderect(other_sprite.rect)
