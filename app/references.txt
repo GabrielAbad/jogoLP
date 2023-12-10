@@ -1,0 +1,3 @@
+A parte de sprites foi baseada nesse tutorial de pygame do github.
+
+https://github.com/Insper/pygame-snippets 
