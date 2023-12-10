@@ -22,6 +22,17 @@ Toda a arte foi desenhada manualmente pelo Henrique.
 
 Cuidado, cair na lava com a Watergirl ou cair na água com o Fireboy leva ao fim do jogo. O objetivo é levar cada personagem à sua respectiva porta.
 
+## Documentação 
+
+A documentação do código está hospedada em um website:
+
+O código foi segmentado em diferentes arquivos e está dentro da pasta app,
+
+por isto, quando acessar a documentação hospedada neste site, clique em app para ver mais detalhes.
+
+[Clique aqui para acessar](https://pygamefireboywatergirldoc.netlify.app)
+
+
 ## Instalação e Execução do Jogo
 
 ### Pré-requisitos
@@ -33,3 +44,8 @@ Certifique-se de ter o ambiente de desenvolvimento configurado conforme as instr
 ```bash
 git clone https://github.com/seu-usuario/jogoLP.git
 cd jogoLP
+```
+
+### Execução do Jogo
+
+Execute o arquivo chamado `main.py` para jogar. Este arquivo está na pasta do repositório baixado.
