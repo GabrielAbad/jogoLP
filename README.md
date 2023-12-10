@@ -6,6 +6,8 @@ Bem-vindo ao repositório do jogo FireWater! Este é um projeto desenvolvido com
 
 No modo dual-player, duas pessoas no mesmo computador podem jogar simultaneamente. O objetivo é chegar primeiro na porta para vencer!
 
+Toda a arte foi desenhada manualmente pelo Henrique.
+
 ### Controles
 
 #### Personagem
